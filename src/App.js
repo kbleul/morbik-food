@@ -1,5 +1,6 @@
 import Header from "./header";
-import Footer from "./fotter"
+import Footer from "./fotter";
+import Main from "./main";
 
 function App() {
   return (
@@ -9,8 +10,9 @@ function App() {
       </div>
       <nav className="  col-span-1 row-start-2 row-end-2 border-2 border-gray-500"></nav>
       <main className="col-start-2 col-end-9 row-start-2 row-end-5 border-2 border-gray-500">
-
+        <Main />
       </main>
+
       <div className="col-span-9 border-2 border-gray-500">
       <Footer />
       </div>
