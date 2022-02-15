@@ -8,8 +8,6 @@ const Main = () => {
   const [showrecipe_page , set_showrecipe_page] = useState(false);
   const [recipefor , set_recipefor] = useState("");
 
-
-
   const getCatagories = async () => {
      try {
     const result = await axios(`https://www.themealdb.com/api/json/v1/1/list.php?c=list`);
@@ -22,6 +20,8 @@ const Main = () => {
     try {
       const result = await axios(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${currentcatagory}`)
       set_frontfood_list(result.data.meals)
+
+        
     }catch(e) { console.log(`Fetch ${currentcatagory} based foods failed !  ` + e)}
 
   }
@@ -60,11 +60,40 @@ const Main = () => {
 const RecipePage = ({foodid}) => {
 
   const [recipedata, set_recipedata] = useState([]);
+  const [recipetext, set_recipetext] = useState([]);
+  const [ingredients , set_ingridients] = useState([]);
+  const [ingredientamount , set_ingredientsamount] = useState([]);
+
 
   const getRecipe = async () => {
+
     try {
-      const result = await axios(`www.themealdb.com/api/json/v1/1/lookup.php?i=${foodid}`)
+      const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodid}`)
+
       set_recipedata(result.data.meals)
+      let temparr = result.data.meals[0].strInstructions.split("."); 
+
+      set_recipetext(temparr);
+
+      temparr= [];
+     let temparr_two = [];
+
+          for(let i=1; i<21 ; i++)
+          { 
+            let str = "strIngredient" + i;
+            let str2 = "strMeasure" + i;
+              temparr.push(result.data.meals[0][str])  
+              temparr_two.push(result.data.meals[0][str2])  
+          }
+
+          set_ingridients(temparr);
+          set_ingredientsamount(temparr_two);
+
+               temparr =[];  temparr_two =[];
+               console.log(ingredients)
+               console.log(ingredientamount);
+
+
     }catch(e) { console.log(`Fetch recipe for ${foodid} failed !  ` + e)}
   }
 
@@ -75,7 +104,11 @@ const RecipePage = ({foodid}) => {
       recipedata.map(item => (
         <div key={`${item.strMeal} ${item.idMeal}`}>
           <h4 key={item.strMeal}>{item.strMeal}</h4>
-          <p key={item.strMeal}>{item.strInstructions}</p>
+          <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
+          { recipetext.map(steps => (   <p key={steps}>- {steps}</p>   )) }
+
+          { ingredients.map(obj => (obj !== "" && <p key={obj}>{obj} ------- {ingredientamount[ingredients.indexOf(obj)] }</p>   )) }
+
         </div>
       ))
     }
