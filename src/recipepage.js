@@ -1,8 +1,9 @@
 import  {useState , useEffect} from 'react'
 import axios from 'axios'
 
-const RecipePage = ({foodid}) => {
+const RecipePage = ({foodid , similarfoods}) => {
 
+    const [currentfood_id, set_currentfood_id] = useState(foodid)
     const [recipedata, set_recipedata] = useState([]);
     const [recipetext, set_recipetext] = useState([]);
     const [ingredients , set_ingridients] = useState([]);
@@ -10,11 +11,10 @@ const RecipePage = ({foodid}) => {
     const [youtubeid, set_youtubeid ] = useState("");
     const [showvideo , set_showvideo] = useState(false);
   
-  
     const getRecipe = async () => {
   
       try {
-        const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodid}`)
+        const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${currentfood_id}`)
   
         set_recipedata(result.data.meals)
         let temparr = result.data.meals[0].strInstructions.split("\n"); 
@@ -44,7 +44,7 @@ const RecipePage = ({foodid}) => {
                  temparr =[];  temparr_two =[];
               
               temparr = result.data.meals[0].strYoutube.split("=");
-  console.log(temparr)
+
               set_youtubeid(temparr[temparr.length-1]);
               temparr= [];
           
@@ -53,8 +53,7 @@ const RecipePage = ({foodid}) => {
    
     }
   
-    useEffect(() => {  getRecipe()  },[])
-    useEffect(() => { console.log(ingredients)},[ingredients])
+    useEffect(() => {  getRecipe()  },[currentfood_id])
   
     return (<section>
       {
@@ -81,6 +80,19 @@ const RecipePage = ({foodid}) => {
    
         ))
       }
+
+          <div>
+      {  similarfoods.map(item => ( <div onClick={() => set_currentfood_id(item.idMeal)} key={`${item.idMeal}${item.strMealThumb}${item.strMeal}`}>
+        {
+         (recipedata[0] !== undefined && recipedata[0].strMeal !== item.strMeal ) &&  <div key={`${item.strMealThumb}${item.strMeal}`} >
+        <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} width="100" height="150" />
+        <p key={item.strMeal}>{item.strMeal}</p>
+        </div>  
+        }
+                    </div>
+        )
+        )}
+        </div>
       </section>)
   }
 

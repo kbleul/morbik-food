@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react'
 import axios from 'axios'
 import RecipePage from './recipepage'
 
-const Main = () => {
+const Main = ({nav_selectedCatagory}) => {
   const [catagories, set_catagories] = useState([]);
   const [frontfood_list, set_frontfood_list] = useState([]);
   const [currentcatagory, set_currentcatagory] = useState("Beef");
@@ -42,7 +42,7 @@ const Main = () => {
         }
         </section>
 
-  { showrecipe_page ? <RecipePage foodid={recipefor} /> :
+  { showrecipe_page ? <RecipePage foodid={recipefor} similarfoods= {frontfood_list} /> :
      <section className="grid grid-cols-3 gap-2">
          {
            frontfood_list.map(item => (
