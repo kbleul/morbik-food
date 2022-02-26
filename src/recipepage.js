@@ -1,5 +1,7 @@
 import  {useState , useEffect} from 'react'
 import axios from 'axios'
+import loading from './imgs/loading.gif'
+
 
 const RecipePage = ({foodid , similarfoods}) => {
 
@@ -56,6 +58,8 @@ const RecipePage = ({foodid , similarfoods}) => {
     useEffect(() => {  getRecipe()  },[currentfood_id])
   
     return (<section>
+      {recipedata.length === 0 ? <img src={loading} alt="loading" /> :
+      <div>
       {
         recipedata.map(item => (
           <div key={`${item.strMeal} ${item.strMeal} ${item.idMeal}`}>
@@ -79,9 +83,10 @@ const RecipePage = ({foodid , similarfoods}) => {
           </div>
    
         ))
-      }
+      } </div>}
 
           <div>
+    
       {  similarfoods.map(item => ( <div onClick={() => set_currentfood_id(item.idMeal)} key={`${item.idMeal}${item.strMealThumb}${item.strMeal}`}>
         {
          (recipedata[0] !== undefined && recipedata[0].strMeal !== item.strMeal ) &&  <div key={`${item.strMealThumb}${item.strMeal}`} >
