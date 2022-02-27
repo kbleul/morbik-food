@@ -26,7 +26,7 @@ const Main = ({navChoice,setChoice, choicetype , set_choicetype, togglerecipe_pa
 
       }
       else if(choicetype === "a") {
-      const result = await axios(`https://www.themealdb.com/api/json/v1/1/f ilter.php?a=${navChoice}`)
+      const result = await axios(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${navChoice}`)
       if( result.data.meals == null  ) { set_frontfood_list([{"idMeal" : "No Food Found Error"}]) }
       else { set_frontfood_list(result.data.meals)}
 

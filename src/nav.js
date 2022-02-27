@@ -1,4 +1,3 @@
-
 import React, {useState , useEffect} from 'react'
 import axios from 'axios'
 import loading from './imgs/loading.gif'
@@ -45,16 +44,16 @@ const Navigation = ({setnavChoice , set_choicetype , set_togglerecipe_page}) => 
   return (
     <section>
         <div>
-        <p>Search by :</p>
-            <h3>Areas</h3>
+       
+            <h2 className="font-black text-lg pl-12 mt-10 mb-5">Areas</h2>
             {!showarea_choiceresults ? <img src={loading} alt="loading" />  :
-             <div>
+             <div className="flex flex-col">
                 {area_choiceresults.map(item => (
-                    <button onClick={() =>{ set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a")}} 
+                    <button className="border-2 px-2 py-4" onClick={() =>{ set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a")}} 
                     key={item.strArea}>{item.strArea}</button>
                 ))}
             </div>}
-            <h3>Ingredients</h3>
+            <h2>Ingredients</h2>
             {!showingredient_choiceresults ? <img src={loading} alt="loading" />  :
             <div>
                {ingredient_choiceresults.map(item => (
