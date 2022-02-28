@@ -23,7 +23,7 @@ function App() {
         <Main navChoice={selectedCatagory} setChoice={set_selectedCatagory} choicetype={catagoryType}  set_choicetype={set_catagorytype} togglerecipe_page={showrecipe_page} set_togglerecipe_page={set_showrecipe_page}/>
       </main>
 
-      <div className="col-span-9 ">
+      <div className="col-start-3 col-end-9  ">
       <Footer />
       </div>
     </div>

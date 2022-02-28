@@ -8,6 +8,7 @@ const Main = ({navChoice,setChoice, choicetype , set_choicetype, togglerecipe_pa
  // [currentcatagory, set_currentcatagory] = useState("Beef");
   
   const [recipefor , set_recipefor] = useState("");
+  const [isnav , set_isnav] = useState("text-xs font-black bg-white border-2 rounded-full px-6 py-2 mb-2 ml-4")
 
   const getCatagories = async () => {
      try {
@@ -47,12 +48,14 @@ const Main = ({navChoice,setChoice, choicetype , set_choicetype, togglerecipe_pa
 
   useEffect(() => { getFoods_list(); },[navChoice ])
 
+
+
   return (
-    <article>
+    <article className="ml-4">
        <section>
         {
           catagories.map(item => (
-            <button key={item.strCategory} onClick={() =>{ set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
+            <button className="text-xs font-black bg-amber-400 border-2 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 " key={item.strCategory} onClick={() =>{ set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
           ))
         }
         </section>

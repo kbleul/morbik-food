@@ -59,25 +59,38 @@ const RecipePage = ({foodid , similarfoods}) => {
   
     return (<section>
       {recipedata.length === 0 ? <img src={loading} alt="loading" /> :
-      <div>
+      <div className="mt-16">
       {
         recipedata.map(item => (
           <div key={`${item.strMeal} ${item.strMeal} ${item.idMeal}`}>
+          <section className="flex flex-row justify-between items-center">
+            <div>
+            <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal}  object-fit="cover" width="500" height="315"/>
             <h4 key={item.strMeal}>{item.strMeal}</h4>
-            <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} width="300" height="315"/>
-            { recipetext.map(steps => (steps !== "" &&  <p key={steps}> {steps}</p>   )) }
-  
-  
-            { ingredientamount.length >0 && <div>{ ingredients.map(obj => (<p key={`${item.idMeal}${obj} ${item.idMeal}`}>-{ingredientamount[ingredients.indexOf(obj)] } {obj}</p>   )) }
-          </div> }
-  
-          <button onClick={ () => set_showvideo(true) }>Watch Video</button>
+             </div>
+
+          {!showvideo && <button onClick={ () => set_showvideo(true) }>Watch Video</button>}
   
           {
            (showvideo && youtubeid !== "" ) && <div>
-            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeid}` } title="YouTube video player" frameborder="0"  allowFullScreen></iframe>
+            <iframe width="440" height="425" src={`https://www.youtube.com/embed/${youtubeid}` } title="YouTube video player" frameborder="0"  allowFullScreen></iframe>
+            <button>Hide Vidio</button>
             </div>
           }
+          
+          </section>
+
+          <section className="flex flex-row">
+
+          { ingredientamount.length >0 && <div className="w-1/4">{ ingredients.map(obj => (<p key={`${item.idMeal}${obj} ${item.idMeal}`}>-{ingredientamount[ingredients.indexOf(obj)] } {obj}</p>   )) }
+          </div> }
+
+            <div className="w-3/4 border-l-2 border-l-green-700 pl-8">
+            { recipetext.map(steps => (steps !== "" &&  <p key={steps}> {steps}</p>   )) }
+            </div>
+  
+            
+          </section>
         
     
           </div>
@@ -85,9 +98,9 @@ const RecipePage = ({foodid , similarfoods}) => {
         ))
       } </div>}
 
-          <div>
+          <div className="flex flex-row  overflow-x-scroll w-full ">
     
-      {  similarfoods.map(item => ( <div onClick={() => set_currentfood_id(item.idMeal)} key={`${item.idMeal}${item.strMealThumb}${item.strMeal}`}>
+      {  similarfoods.map(item => ( <div className="w-full " onClick={() => set_currentfood_id(item.idMeal)} key={`${item.idMeal}${item.strMealThumb}${item.strMeal}`}>
         {
          (recipedata[0] !== undefined && recipedata[0].strMeal !== item.strMeal ) &&  <div key={`${item.strMealThumb}${item.strMeal}`} >
         <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} width="100" height="150" />
