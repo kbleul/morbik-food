@@ -55,7 +55,7 @@ const Main = ({navChoice,setChoice, choicetype , set_choicetype, togglerecipe_pa
        <section>
         {
           catagories.map(item => (
-            <button className="text-xs font-black bg-amber-400 border-2 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 " key={item.strCategory} onClick={() =>{ set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
+            <button className="text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 " key={item.strCategory} onClick={() =>{ set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
           ))
         }
         </section>
