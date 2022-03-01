@@ -5,7 +5,6 @@ import RecipePage from './recipepage'
 const Main = ({navChoice,setChoice, choicetype , set_choicetype, togglerecipe_page, set_togglerecipe_page}) => {
   const [catagories, set_catagories] = useState([]);
   const [frontfood_list, set_frontfood_list] = useState([]);
- // [currentcatagory, set_currentcatagory] = useState("Beef");
   
   const [recipefor , set_recipefor] = useState("");
   const [isnav , set_isnav] = useState("text-xs font-black bg-white border-2 rounded-full px-6 py-2 mb-2 ml-4")
@@ -51,17 +50,17 @@ const Main = ({navChoice,setChoice, choicetype , set_choicetype, togglerecipe_pa
 
 
   return (
-    <article className="ml-4">
-       <section>
+    <article className="ml-4 mt-2 ">
+       <section className=" ">
         {
           catagories.map(item => (
-            <button className="text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 " key={item.strCategory} onClick={() =>{ set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
+            <button className="  text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 " key={item.strCategory} onClick={() =>{ set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
           ))
         }
         </section>
 
   { togglerecipe_page ? <RecipePage foodid={recipefor} similarfoods= {frontfood_list} /> :
-     <section className="grid grid-cols-3 gap-2">
+     <section className="grid grid-cols-3 gap-2 m-16">
          { frontfood_list[0] === "No Food Found Error" ? <div><p>No available food for this ingrident.</p></div> :
            frontfood_list.map(item => (
              <div key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true);}}>

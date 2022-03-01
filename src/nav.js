@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import loading from './imgs/loading.gif'
+import loading from './imgs/loading_2.gif'
 
 const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => {
 
@@ -56,13 +56,13 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
 
 
   return (
-    <section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto">
+    <section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto mt-16">
       <div>
         <div className="flex flex-row items-center justify-between ">
           <h2 className="font-black text-lg pl-12 mt-10 mb-3">Areas</h2>
           <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("area")}>{showareas ? "↑" : "↓"}</button>
         </div>
-        {!showarea_choiceresults ? <img src={loading} alt="loading" /> :
+        {!showarea_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
           <div className={showareas ? "flex flex-col items-center" : "hidden"}>
             {area_choiceresults.map(item => (
               <button className="border-b px-2 py-3 w-3/4" onClick={() => { set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a") }}
@@ -74,7 +74,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
           <h2 className="font-black text-lg pl-12 mt-10 mb-3">Ingredients</h2>
           <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("ingr")}>{showingredients ? "↑" : "↓"}</button>
         </div>
-        {!showingredient_choiceresults ? <img src={loading} alt="loading" /> :
+        {!showingredient_choiceresults ?<div className="flex item-center justify-center">  <img src={loading} alt="loading" /></div> :
           <div className={showingredients ? "grid grid-cols-2" : "hidden"}>
             {ingredient_choiceresults.map(item => (
               <button className="border-b px-2 py-4 w-4/4 ml-2" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient); set_choicetype("i") }}
