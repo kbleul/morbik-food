@@ -1,5 +1,6 @@
-import RecipeContent from "./recipeContent"
-import { BrowserRouter, Routes, Route ,Outlet , Redirect} from "react-router-dom"
+import RecipeContent from "./recipecontent"
+import RedditPage from "./redditpage"
+import { BrowserRouter, Routes, Route ,Outlet } from "react-router-dom"
 import Header from "./header";
 
 const App = () => {
@@ -8,8 +9,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} >
         <Route path="/" element={<RecipeContent />} />
-        <Route path="/reddit" element={<RedditPage />}  />
-      </Route>
+           <Route path="/reddit" element={<RedditPage />}  />
+        </Route>
     </Routes>
 
 
@@ -17,12 +18,6 @@ const App = () => {
  
 }
 
-
-const RedditPage = () => {
-  return (<div className="mt-32">
-    <p>Reddit page</p>
-  </div>)
-}
 
 
 const Home = () => {
