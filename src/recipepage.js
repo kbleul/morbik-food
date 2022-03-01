@@ -67,9 +67,9 @@ const RecipePage = ({ foodid, similarfoods }) => {
           recipedata.map(item => (
             <div key={`${item.strMeal} ${item.strMeal} ${item.idMeal}`}>
               <section className="flex flex-row items-center">
-                <div className="ml-8">
-                  <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} width="480" height="315" />
-                  <h4 className="" key={item.strMeal}>{item.strMeal}</h4>
+                <div className="ml-8 flex flex-col w-2/4">
+                  <img className="ml-1" key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} width="480" height="315" />
+                  <h4 className="text-center border-b-2 font-black" key={item.strMeal}>{item.strMeal} </h4>
                 </div>
 
                 {!showvideo && <button className="border-1 rounded-full bg-amber-300 px-8 py-2 flex flex-row justify-between font-mono ml-32 hover:bg-amber-400 " onClick={() => set_showvideo(true)}>
@@ -104,7 +104,7 @@ const RecipePage = ({ foodid, similarfoods }) => {
           ))
         } </div>}
 
-      <h2 className="capitalize text-xl leading-10 font-light pl-2 ml-24 ">Similar Foods</h2>
+     {recipedata.length !== 0  && <h2 className="capitalize text-xl leading-10 font-light pl-2 ml-24 ">Similar Foods</h2>}
 
     <div className="h-96 overflow-y-scroll ml-24 ">
 
