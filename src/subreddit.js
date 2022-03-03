@@ -1,6 +1,8 @@
 import React, {useState , useEffect} from 'react'
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 import axios from 'axios'
+import food_subredddits_set from "./food_subredditlist"
+
 
 
 const Subreddit = () => {
@@ -9,6 +11,7 @@ const Subreddit = () => {
     const [subredditcontent_map, set_subredditcontent_map] = useState({});
     const [comment_isfetched, set_comment_isfetched] = useState(false);
     const {slug} = useParams();
+    const [a,seta] = useState(slug)
 
 
     useEffect(() => {
@@ -21,7 +24,7 @@ const Subreddit = () => {
         }
 
         fetchsubreddit();
-    },[slug])
+    },[slug, a])
 
     useEffect(() => {
         
@@ -36,22 +39,20 @@ const Subreddit = () => {
                 //remove ? to allow reddit api call
                 if (item.data.title[item.data.title.length - 1] === "?") { item.data.title = item.data.title.slice(0, -1); }
 
-                console.log(`https://www.reddit.com/r/${item.data.subreddit}/comments/${item.data.id}/${item.data.title}/.json`)
                 try {
                     const result = await axios(`https://www.reddit.com/r/${item.data.subreddit}/comments/${item.data.id}/${item.data.title}/.json`);
                     tempobj[item.data.id] = result.data[0].data.children[0].data;
 
                     counter++;
-                    console.log(subreddit.length + "---" +counter)
 
                     if (counter === subreddit.length - 1) {
                         set_subredditcontent_map(tempobj)
                         set_comment_isfetched(true);
-                    console.log("yes")
                     }
                 } catch (error) {
                     console.log("Error: Fetch reddit posts and comments failed.\n-------------------" + error + "-------------------------");
                     tempobj[item.data.id] = {}
+                    counter++;
                 }
             }
             fetchcomments();
@@ -59,7 +60,13 @@ const Subreddit = () => {
     }}, [subreddit])
     
   return (
-    <article className="">
+    <article className="grid grid-cols-8 gap-3">
+
+    <nav className="col-start-1 col-end-3 row-start-2 row-end-2 mt-12">
+           <RedditNavigation />
+     </nav>
+     <main className="col-start-3 col-end-9 row-start-2 row-end-5 mt-12">
+
 { subreddit.length > 0 && <div>
     <a href={`https://www.reddit.com/r/${subreddit[0].data.subreddit}/`} target="_blank" rel="noreferrer" >
         <h2 className="subredditmain_title" key={subreddit[0].data.subreddit}>{subreddit[0].data.subreddit}</h2></a>
@@ -102,8 +109,31 @@ const Subreddit = () => {
             </section>
         ))
     } </div> }
+    </main>
+    
 </article>
   )
+}
+
+const RedditNavigation = () => {
+   
+    let foodsubreddit_arr = [];
+
+const iterator1 = food_subredddits_set.entries();
+
+         for (const entry of iterator1) {  foodsubreddit_arr.push(entry[0]); console.log(entry[0]) }
+
+    return(<section>
+         {
+           foodsubreddit_arr.map(item => (
+            <Link key={`${item}key`} to={`/reddit/${item}`} >
+            <div key={`${item}1`}>
+              <button key={item}>{item}</button>
+            </div>
+            </Link>
+            ))
+         }
+        </section>)
 }
 
 export default Subreddit
