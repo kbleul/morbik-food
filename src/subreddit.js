@@ -1,5 +1,5 @@
-import React from 'react'
-import {useState , useEffect, useParams} from "react-router-dom"
+import React, {useState , useEffect} from 'react'
+import {useParams} from "react-router-dom"
 import axios from 'axios'
 
 
@@ -8,7 +8,7 @@ const Subreddit = () => {
     const [subreddit , set_subreddit] = useState([]);
     const [subredditcontent_map, set_subredditcontent_map] = useState({});
     const [comment_isfetched, set_comment_isfetched] = useState(false);
-    const {placeholder} = useParams();
+    const {slug} = useParams();
 
 
     useEffect(() => {
@@ -17,15 +17,18 @@ const Subreddit = () => {
             const result = await axios(`https://www.reddit.com/r/${slug}/.json`);
                set_subreddit(result.data.data.children);
         
-    } catch (e) { console.log(`Fetch r/${placeholder} failed. ${e}`)  }
+    } catch (e) { console.log(`Fetch r/${slug} failed. ${e}`)  }
         }
 
         fetchsubreddit();
-    },[])
+    },[slug])
 
     useEffect(() => {
-        let tempobj = {};
-        let counter = 0;
+        
+        
+        if(subreddit.length > 0){
+            let tempobj = {};
+            let counter = 0;
 
         subreddit.forEach(item => {
             const fetchcomments = async () => {
@@ -33,16 +36,18 @@ const Subreddit = () => {
                 //remove ? to allow reddit api call
                 if (item.data.title[item.data.title.length - 1] === "?") { item.data.title = item.data.title.slice(0, -1); }
 
+                console.log(`https://www.reddit.com/r/${item.data.subreddit}/comments/${item.data.id}/${item.data.title}/.json`)
                 try {
-                    const result = await axios(` https://www.reddit.com/r/${item.data.subreddit}/comments/${item.data.id}/${item.data.title}/.json`);
+                    const result = await axios(`https://www.reddit.com/r/${item.data.subreddit}/comments/${item.data.id}/${item.data.title}/.json`);
                     tempobj[item.data.id] = result.data[0].data.children[0].data;
 
                     counter++;
+                    console.log(subreddit.length + "---" +counter)
 
                     if (counter === subreddit.length - 1) {
                         set_subredditcontent_map(tempobj)
                         set_comment_isfetched(true);
-
+                    console.log("yes")
                     }
                 } catch (error) {
                     console.log("Error: Fetch reddit posts and comments failed.\n-------------------" + error + "-------------------------");
@@ -51,11 +56,11 @@ const Subreddit = () => {
             }
             fetchcomments();
         });
-    }, [subreddit])
+    }}, [subreddit])
     
   return (
     <article className="">
-
+{ subreddit.length > 0 && <div>
     <a href={`https://www.reddit.com/r/${subreddit[0].data.subreddit}/`} target="_blank" rel="noreferrer" >
         <h2 className="subredditmain_title" key={subreddit[0].data.subreddit}>{subreddit[0].data.subreddit}</h2></a>
     {
@@ -96,7 +101,7 @@ const Subreddit = () => {
                 </a>
             </section>
         ))
-    }
+    } </div> }
 </article>
   )
 }

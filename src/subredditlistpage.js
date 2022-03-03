@@ -23,7 +23,6 @@ const SubredditListPage = () => {
             temparr.push(result.data.data.children[0].data);
 
             if (temparr.length === 41) { setreddit(temparr); temparr = []; }
-            console.log(counter + " - " + result.data.data.children[0].data.subreddit);
                 counter++;
 
             } catch(e) { console.log("Fetch " + item + " failed." + e) }
@@ -43,7 +42,7 @@ const SubredditListPage = () => {
     {reddit.length === 0 ? <div className="flex item-center"><img src={loading} alt="loading" className="loadingimg" /> </div>:
             <div className="grid grid-cols-5 gap-3">
                    { reddit.map(item => (
-                       <Link to={`/reddit/${item.subreddit}`} >
+                       <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
                        <section key={item.permalink} className="">
                         <p key={item.subreddit}>{item.subreddit}</p>
                         <p key={item.subreddit_name_prefixed} className="">{item.subreddit_name_prefixed}</p>
