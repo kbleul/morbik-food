@@ -1,4 +1,5 @@
 import RecipeContent from "./recipecontent"
+import DrinkRecipeContent from "./drinkrecipecontent"
 import RedditPage from "./redditpage"
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom"
 import Header from "./header";
@@ -11,7 +12,8 @@ const App = () => {
   return (<BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} >
-        <Route path="/" element={<RecipeContent />} />
+        <Route path="/" element={<RecipeContent />} />\
+        <Route path="/drinks" element={<DrinkRecipeContent />} />
         <Route path="/reddit" element={<RedditPage />} >
             <Route path="/reddit/" element={<SubredditListPage /> } />
               <Route path=":slug" element={<Subreddit />} />
