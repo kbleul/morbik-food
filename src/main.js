@@ -9,7 +9,6 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
   const [frontfood_list, set_frontfood_list] = useState([]);
 
   const [recipefor, set_recipefor] = useState("");
-  const [isnav, set_isnav] = useState("text-xs font-black bg-white border-2 rounded-full px-6 py-2 mb-2 ml-4")
 
   const getCatagories = async () => {
     try {
@@ -52,7 +51,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
 
   return (
-    <article className="ml-4 mt-2 ">
+    <article className="ml-4 mt-8 ">
       <section className=" ">
         {
           catagories.map(item => (
@@ -62,12 +61,12 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       </section>
 
       <div className="mt-8 flex justify-center">
-        <Link to={`/drinks`} >
+          <button className="font-black underline ">Foods</button>
 
-          <button className="font-light hover:bg-amber-200">Drinks</button>
+        <Link to={`/drinks`} >
+          <button className="ml-8 font-light hover:bg-amber-200">Drinks</button>
         </Link>
 
-        <button className="ml-8 font-black underline ">Foods</button>
 
       </div>
 
@@ -77,7 +76,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
             frontfood_list.map(item => (
               <div key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
                 <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
-                <p key={item.strMeal}>{item.strMeal}</p>
+                <p className="font-light text-center" key={item.strMeal}>{item.strMeal}</p>
 
               </div>
             ))

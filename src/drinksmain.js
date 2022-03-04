@@ -58,7 +58,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
 
   return (
-    <article className="ml-4 mt-2 ">
+    <article className="ml-4 mt-8 ">
       <section className=" ">
         {
           catagories.map(item => (
@@ -69,12 +69,11 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
       <div className="mt-8 flex justify-center">
 
-        <button className=" font-black underline ">Drinks</button>
-
         <Link to={`/`} >
-          <button className="ml-8 font-light hover:bg-amber-200">Foods</button>
+          <button className="font-light hover:bg-amber-200">Foods</button>
         </Link>
 
+        <button className="ml-8 font-black underline ">Drinks</button>
 
       </div>
 
@@ -84,7 +83,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
             frontdrink_list.map(item => (
               <div key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
                 <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
-                <p key={item.strDrink}>{item.strDrink}</p>
+                <p className="font-light text-center" key={item.strDrink}>{item.strDrink}</p>
 
               </div>
             ))

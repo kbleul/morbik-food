@@ -65,7 +65,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         {!showarea_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
           <div className={showareas ? "flex flex-col items-center" : "hidden"}>
             {area_choiceresults.map(item => (
-              <button className="border-b px-2 py-3 w-3/4" onClick={() => { set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a") }}
+              <button className="border-b px-4 py-3 w-3/4 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a") }}
                 key={item.strArea}>{item.strArea}</button>
             ))}
           </div>}
@@ -77,7 +77,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         {!showingredient_choiceresults ?<div className="flex item-center justify-center">  <img src={loading} alt="loading" /></div> :
           <div className={showingredients ? "grid grid-cols-2" : "hidden"}>
             {ingredient_choiceresults.map(item => (
-              <button className="border-b px-2 py-4 w-4/4 ml-2" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient); set_choicetype("i") }}
+              <button className="border-b px-4 py-4 w-4/4 ml-2 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient); set_choicetype("i") }}
                 key={item.strIngredient}>{item.strIngredient}</button>
             ))}
           </div>}

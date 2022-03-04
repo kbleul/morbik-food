@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import loading from './imgs/loading.gif'
+import saveFavorites from './savefavorites_function'
+
 
 
 const RecipePage = ({ drinkid, similardrinks }) => {
@@ -53,17 +55,23 @@ const RecipePage = ({ drinkid, similardrinks }) => {
   useEffect(() => { getRecipe() }, [currentdrink_id])
 
   return (<section className="mt-8">
-    {recipedata.length === 0 ?<div className="flex item-center justify-center"> 
+    {recipedata.length === 0 ?<div className="flex item-center justify-center "> 
     <img src={loading} alt="loading" className="" /> 
     </div> :
       <div className="mt-16">
         {
           recipedata.map(item => (
             <div key={`${item.strDrink} ${item.strDrink} ${item.idDrink}`}>
-              <section className="flex flex-row items-center">
+              <section className="flex flex-row items-center justify-center">
                 <div className="ml-8 flex flex-col w-2/4">
                   <img className="ml-1" key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} width="480" height="315" />
-                  <h4 className="text-center border-b-2 font-black" key={item.strDrink}>{item.strDrink} </h4>
+
+                   <div className="flex justify-between">
+                    <h4 className="text-center border-b-2 font-black pl-2 w-3/5" key={item.strDrink}>{item.strDrink} </h4>
+                    <button className="pr-4 text-red-400 hover:border-b" onClick={() => saveFavorites("drink",item.idDrink)}>Add to Favories</button>
+                  </div>
+
+
                 </div>
               </section>
 

@@ -82,7 +82,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
     {!showalcholic_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
       <div className={showalcholic ? "flex flex-col items-center" : "hidden"}>
         {alcholic_choiceresults.map(item => (
-          <button className="border-b px-2 py-3 w-3/4" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strAlcoholic); set_choicetype("a") }}
+          <button className="border-b px-2 py-3 w-3/4 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strAlcoholic); set_choicetype("a") }}
             key={item.strAlcoholic}>{item.strAlcoholic}</button>
         ))}
       </div>}
@@ -94,7 +94,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         {!showglasses_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
           <div className={showglasses ? "flex flex-col items-center" : "hidden"}>
             {glasses_choiceresults.map(item => (
-              <button className="border-b px-2 py-3 w-3/4" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strGlass); set_choicetype("g") }}
+              <button className="border-b px-2 py-3 w-3/4 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strGlass); set_choicetype("g") }}
                 key={item.strGlass}>{item.strGlass}</button>
             ))}
           </div>}
@@ -106,7 +106,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         {!showingredient_choiceresults ?<div className="flex item-center justify-center">  <img src={loading} alt="loading" /></div> :
           <div className={showingredients ? "grid grid-cols-2" : "hidden"}>
             {ingredient_choiceresults.map(item => (
-              <button className="border-b px-2 py-4 w-4/4 ml-2" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient1); set_choicetype("i") }}
+              <button className="border-b px-2 py-4 w-4/4 ml-2 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient1); set_choicetype("i") }}
                 key={item.strIngredient1}>{item.strIngredient1}</button>
             ))}
           </div>}
