@@ -33,6 +33,12 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
         else { set_frontdrink_list(result.data.drinks) }
 
       }
+      else if (choicetype === "a") {
+        const result = await axios(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${navChoice}`)
+        if (result.data.drinks == null) { set_frontdrink_list(["No Drink Found Error"]) }
+        else { set_frontdrink_list(result.data.drinks) }
+
+      }
       else {
         const result = await axios(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${navChoice}`)
         if (result.data.drinks == null) { set_frontdrink_list(["No Drink Found Error"]) }
@@ -62,20 +68,21 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       </section>
 
       <div className="mt-8 flex justify-center">
-        <Link to={`/drinks`} >
 
-          <button className=" font-black underline ">Drinks</button>
+        <button className=" font-black underline ">Drinks</button>
+
+        <Link to={`/`} >
+          <button className="ml-8 font-light hover:bg-amber-200">Foods</button>
         </Link>
 
-        <button className="ml-8 font-light hover:bg-amber-200">Foods</button>
 
       </div>
 
       {togglerecipe_page ? <RecipePage drinkid={recipefor} similardrinks={frontdrink_list} /> :
-        <section className="grid grid-cols-3 gap-2 m-16">
+        <section className="grid grid-cols-3 gap-2 m-16 ml-10">
           {frontdrink_list[0] === "No Drink Found Error" ? <div><p>No available drink for this ingrident.</p></div> :
             frontdrink_list.map(item => (
-            <div key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
+              <div key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
                 <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
                 <p key={item.strDrink}>{item.strDrink}</p>
 

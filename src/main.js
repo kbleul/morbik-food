@@ -72,7 +72,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       </div>
 
       {togglerecipe_page ? <RecipePage foodid={recipefor} similarfoods={frontfood_list} /> :
-        <section className="grid grid-cols-3 gap-2 m-16">
+        <section className="grid grid-cols-3 gap-2 m-16 ml-10">
           {frontfood_list[0] === "No Food Found Error" ? <div><p>No available food for this ingrident.</p></div> :
             frontfood_list.map(item => (
               <div key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>

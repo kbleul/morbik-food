@@ -6,17 +6,26 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
 
   const [ingredient_choiceresults, setingredient_choiceresults] = useState([]);
   const [glasses_choiceresults, setglasses_choiceresults] = useState([]);
+  const [alcholic_choiceresults, setalcholic_choiceresults] = useState([]);
+
 
   const [showingredient_choiceresults, set_showingredient_choiceresults] = useState(false);
   const [showglasses_choiceresults, set_showglasses_choiceresults] = useState(false);
+  const [showalcholic_choiceresults, set_showalcholic_choiceresults] = useState(false);
 
-  const [showingredients, set_showingredients] = useState(true);
+
+  const [showalcholic, set_showalcholic] = useState(true);
+  const [showingredients, set_showingredients] = useState(false);
   const [showglasses, set_showglasses] = useState(false);
 
 
 
   const getCatagories = async () => {
     try {
+      const result_alcholic = await axios(`https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list`);
+      setalcholic_choiceresults(result_alcholic.data.drinks);
+      set_showalcholic_choiceresults(true);
+      
       const result_glass = await axios(`https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list`);
       setglasses_choiceresults(result_glass.data.drinks);
       set_showglasses_choiceresults(true);
@@ -52,9 +61,13 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
       if (showglasses) { set_showglasses(false); }
       else set_showglasses(true)
     }
-    else {
+    else if(type==="ingr") {
       if (showingredients) { set_showingredients(false); }
       else set_showingredients(true)
+    }
+    else {
+      if (showalcholic) { set_showalcholic(false); }
+      else set_showalcholic(true)
     }
   }
 
@@ -62,6 +75,18 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
   return (
     <section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto mt-16">
       <div>
+      <div className="flex flex-row items-center justify-between ">
+      <h2 className="font-black text-lg pl-12 mt-10 mb-3">Type</h2>
+      <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("alcholic")}>{showalcholic ? "↑" : "↓"}</button>
+    </div>
+    {!showalcholic_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
+      <div className={showalcholic ? "flex flex-col items-center" : "hidden"}>
+        {alcholic_choiceresults.map(item => (
+          <button className="border-b px-2 py-3 w-3/4" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strAlcoholic); set_choicetype("a") }}
+            key={item.strAlcoholic}>{item.strAlcoholic}</button>
+        ))}
+      </div>}
+
         <div className="flex flex-row items-center justify-between ">
           <h2 className="font-black text-lg pl-12 mt-10 mb-3">Glasses</h2>
           <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("glass")}>{showglasses ? "↑" : "↓"}</button>
