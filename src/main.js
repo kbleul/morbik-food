@@ -64,7 +64,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
           <button className="font-black underline ">Foods</button>
 
         <Link to={`/drinks`} >
-          <button className="ml-8 font-light hover:bg-amber-200">Drinks</button>
+          <button className="ml-8 font-light hover:bg-amber-200 px-4">Drinks</button>
         </Link>
 
 

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom"
 import Header from "./header";
 import SubredditListPage from './subredditlistpage'
 import Subreddit from "./subreddit"
+import MyFavorites from "./MyFavorites"
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/reddit/" element={<SubredditListPage /> } />
               <Route path=":slug" element={<Subreddit />} />
         </Route>
+        <Route path="/myfavorites" element={<MyFavorites />} />
             
       </Route>
   </Routes>
