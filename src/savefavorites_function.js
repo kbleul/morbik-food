@@ -20,12 +20,12 @@ const saveFavorites = (type , id) => {
            }
      }
      else if(type === "reddit") {
-         let redditfavs = localStorage.getItem("SavedReddits");
+         let redditfavs = localStorage.getItem("SavedSubReddits");
 
-           if(!redditfavs) { localStorage.setItem("SavedReddits", [id]) }
+           if(!redditfavs) { localStorage.setItem("SavedSubReddits", [id]) }
            else{ 
-        if(!localStorage.getItem("SavedReddits").split(",").includes(id) )
-        {   localStorage.setItem("SavedReddits",[redditfavs,id])   }
+        if(!localStorage.getItem("SavedSubReddits").split(",").includes(id) )
+        {   localStorage.setItem("SavedSubReddits",[redditfavs,id])   }
            }
      }
   }

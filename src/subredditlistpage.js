@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import list from "./food_subredditlist"
 import axios from 'axios'
 import loading from './imgs/loading.gif'
+import saveFavorites from './savefavorites_function'
 
 
 const SubredditListPage = () => {
@@ -41,15 +42,18 @@ const SubredditListPage = () => {
     </div>
     {reddit.length === 0 ? <div className="flex item-center"><img src={loading} alt="loading" className="loadingimg" /> </div>:
             <div className="grid grid-cols-5 gap-3">
-                   { reddit.map(item => (
+                   { reddit.map(item => (<div key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
                        <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
                        <section key={item.permalink} className="">
                         <p key={item.subreddit}>{item.subreddit}</p>
                         <p key={item.subreddit_name_prefixed} className="">{item.subreddit_name_prefixed}</p>
                         <p key={item.subreddit_type}>{item.subreddit_type}</p>
                         <p key={item.id} className="">Subscribers - {item.subreddit_subscribers}</p>
+                       
                     </section>
                     </Link>
+                    <button className="text-red-400 hover:border-b" onClick={() => saveFavorites("reddit",item.subreddit)}>Add to Favories</button>
+                    </div>
                     ))
                    }
              </div>
