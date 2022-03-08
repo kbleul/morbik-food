@@ -1,11 +1,8 @@
 import  {useState , useEffect} from 'react'
 import {Link} from "react-router-dom"
-
 import list from "./food_subredditlist"
 import axios from 'axios'
 import loading from './imgs/loading.gif'
-import saveFavorites from './savefavorites_function'
-
 
 const SubredditListPage = () => {
    
@@ -52,7 +49,6 @@ const SubredditListPage = () => {
                        
                     </section>
                     </Link>
-                    <button className="text-red-400 hover:border-b" onClick={() => saveFavorites("reddit",item.subreddit)}>Add to Favories</button>
                     </div>
                     ))
                    }

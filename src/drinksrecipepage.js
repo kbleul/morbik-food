@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import loading from './imgs/loading.gif'
 import saveFavorites from './savefavorites_function'
-
+import removeFavorite from "./removefavorites_function"
 
 
 const RecipePage = ({ drinkid, similardrinks }) => {
@@ -12,11 +12,20 @@ const RecipePage = ({ drinkid, similardrinks }) => {
   const [recipetext, set_recipetext] = useState([]);
   const [ingredients, set_ingridients] = useState([]);
   const [ingredientamount, set_ingredientsamount] = useState([]);
+  const [isfavorite , set_isfavorite] = useState(false);
+  let favoritedrinks = [];
 
   const getRecipe = async () => {
 
     try {
       const result = await axios(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${currentdrink_id}`)
+
+      if(localStorage.getItem("SavedDrinks"))
+      {  favoritedrinks = localStorage.getItem("SavedDrinks").split(",");
+      favoritedrinks = localStorage.getItem("SavedDrinks").split(",");
+
+          if(favoritedrinks.includes(currentdrink_id) ) { set_isfavorite(true); }
+      }
 
       set_recipedata(result.data.drinks)
       let temparr = result.data.drinks[0].strInstructions.split("\n");
@@ -52,7 +61,7 @@ const RecipePage = ({ drinkid, similardrinks }) => {
 
   }
 
-  useEffect(() => { getRecipe() }, [currentdrink_id])
+  useEffect(() => { set_isfavorite(false); getRecipe() }, [currentdrink_id])
 
   return (<section className="mt-8">
     {recipedata.length === 0 ?<div className="flex item-center justify-center "> 
@@ -68,7 +77,11 @@ const RecipePage = ({ drinkid, similardrinks }) => {
 
                    <div className="flex justify-between">
                     <h4 className="text-center border-b-2 font-black pl-2 w-3/5" key={item.strDrink}>{item.strDrink} </h4>
-                    <button className="pr-4 text-red-400 hover:border-b" onClick={() => saveFavorites("drink",item.idDrink)}>Add to Favories</button>
+  
+                  {   isfavorite ?
+                    <button key={`${item.idMeal}${item.idMeal}1`} className="pr-4 text-red-400" onClick={() => {set_isfavorite(false); removeFavorite("drink" , item.idMeal)} }>Remove from Favorites</button> :
+                    <button className="pr-4 text-red-400 hover:border-b" onClick={() => {set_isfavorite(true);saveFavorites("drink",item.idDrink)}}>Add to Favories</button>
+                  }
                   </div>
 
 

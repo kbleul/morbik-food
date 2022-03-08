@@ -70,7 +70,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       <div className="mt-8 flex justify-center">
 
         <Link to={`/`} >
-          <button className="font-light hover:bg-amber-200">Foods</button>
+          <button className="font-light px-4 hover:bg-amber-200">Foods</button>
         </Link>
 
         <button className="ml-8 font-black underline ">Drinks</button>
