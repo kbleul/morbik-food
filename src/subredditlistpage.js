@@ -36,19 +36,19 @@ const SubredditListPage = () => {
 
 
     return (<div className="mt-12">
-        <div>
-            <button onClick={() => {setreddit([]); set_isfood(true)}}>Foods</button>
-            <button onClick={() =>{setreddit([]); set_isfood(false)}}>Drinks</button>
+        <div className="flex justify-center mb-12">
+            <button className={isfood ? "font-black underline" : "font-light hover:bg-amber-200 px-4"} onClick={() => {setreddit([]); set_isfood(true)}}>Foods</button>
+            <button className={isfood ? "ml-8 font-light hover:bg-amber-200 px-4" : "font-black underline" } onClick={() =>{setreddit([]); set_isfood(false)}}>Drinks</button>
         </div>
         <section>{ isfood ? <div>
-            {reddit.length === 0 ? <div className="flex item-center"><img src={loading} alt="loading" className="loadingimg" /> </div> :
-                <div className="grid grid-cols-5 gap-3">
-                    {reddit.map(item => (<div key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
+            {reddit.length === 0 ? <div className="flex justify-center "><img src={loading} alt="loading" className="loadingimg" /> </div> :
+                <div className="grid grid-cols-3 gap-3 text-center ">
+                    {reddit.map(item => (<div className="w-3/4 ml-12 mb-8 border-2 border-black py-10 rounded-t-md rounded-r-full rounded-l-3xl hover:bg-yellow-100" key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
                         <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
                             <section key={item.permalink} className="">
                                 <p key={item.subreddit}>{item.subreddit}</p>
-                                <p key={item.subreddit_name_prefixed} className="">{item.subreddit_name_prefixed}</p>
-                                <p key={item.subreddit_type}>{item.subreddit_type}</p>
+                                <p key={item.subreddit_name_prefixed} className="font-mono text-2xl leading-8">{item.subreddit_name_prefixed}</p>
+                                <p className="text-gray-400" key={item.subreddit_type}>{item.subreddit_type}</p>
                                 <p key={item.id} className="">Subscribers - {item.subreddit_subscribers}</p>
 
                             </section>
@@ -60,14 +60,14 @@ const SubredditListPage = () => {
             }</div> :
             <div>
             {reddit.length === 0 ? <div className="flex item-center"><img src={loading} alt="loading" className="loadingimg" /> </div> :
-                <div className="grid grid-cols-5 gap-3">
-                    {reddit.map(item => (<div key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
+                <div className="grid grid-cols-5 gap-3 text-center">
+                    {reddit.map(item => (<div className="w-3/4 ml-12 mb-8 border-2 border-black py-10 rounded-t-md rounded-r-full rounded-l-3xl hover:bg-yellow-100" key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
                         <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
                             <section key={item.permalink} className="">
                                 <p key={item.subreddit}>{item.subreddit}</p>
-                                <p key={item.subreddit_name_prefixed} className="">{item.subreddit_name_prefixed}</p>
+                                <p key={item.subreddit_name_prefixed} className="font-mono text-2xl leading-8">{item.subreddit_name_prefixed}</p>
                                 <p key={item.subreddit_type}>{item.subreddit_type}</p>
-                                <p key={item.id} className="">Subscribers - {item.subreddit_subscribers}</p>
+                                <p key={item.id} className="text-gray-400">Subscribers - {item.subreddit_subscribers}</p>
 
                             </section>
                         </Link>
