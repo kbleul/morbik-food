@@ -4,6 +4,8 @@ import list from "./food_subredditlist"
 import list_drink from "./drinks_subredditlist"
 import axios from 'axios'
 import loading from './imgs/loading.gif'
+import Footer from "./fotter"
+
 
 const SubredditListPage = () => {
 
@@ -35,10 +37,10 @@ const SubredditListPage = () => {
     }, [isfood])
 
 
-    return (<div className="mt-12">
+    return (<div className="mt-36">
         <div className="flex justify-center mb-12">
             <button className={isfood ? "font-black underline" : "font-light hover:bg-amber-200 px-4"} onClick={() => {setreddit([]); set_isfood(true)}}>Foods</button>
-            <button className={isfood ? "ml-8 font-light hover:bg-amber-200 px-4" : "font-black underline" } onClick={() =>{setreddit([]); set_isfood(false)}}>Drinks</button>
+            <button className={isfood ? "ml-8 font-light hover:bg-amber-200 px-4" : "ml-8 font-black underline px-4" } onClick={() =>{setreddit([]); set_isfood(false)}}>Drinks</button>
         </div>
         <section>{ isfood ? <div>
             {reddit.length === 0 ? <div className="flex justify-center "><img src={loading} alt="loading" className="loadingimg" /> </div> :
@@ -59,8 +61,8 @@ const SubredditListPage = () => {
                 </div>
             }</div> :
             <div>
-            {reddit.length === 0 ? <div className="flex item-center"><img src={loading} alt="loading" className="loadingimg" /> </div> :
-                <div className="grid grid-cols-5 gap-3 text-center">
+            {reddit.length === 0 ? <div className="flex justify-center"><img src={loading} alt="loading" className="loadingimg" /> </div> :
+                <div className="grid grid-cols-3 gap-3 text-center">
                     {reddit.map(item => (<div className="w-3/4 ml-12 mb-8 border-2 border-black py-10 rounded-t-md rounded-r-full rounded-l-3xl hover:bg-yellow-100" key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
                         <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
                             <section key={item.permalink} className="">
@@ -78,6 +80,10 @@ const SubredditListPage = () => {
             }</div>
         }
         </section>
+
+        <div className="">
+        <Footer />
+      </div>
     </div>)
 
 };

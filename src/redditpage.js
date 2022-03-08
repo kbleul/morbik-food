@@ -1,18 +1,15 @@
 import React from 'react'
 import { Outlet } from "react-router-dom"
 
-import Footer from "./fotter"
 
 const RedditPage = () => {
-  return (<div className="mt-28">
+  return (<div className="">
   <Outlet />
     <main className="">
     </main>
 
 
-    <div className="">
-      <Footer />
-    </div>
+   
   </div>)
 }
 

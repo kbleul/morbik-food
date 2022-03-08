@@ -76,7 +76,8 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
     <section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto mt-16">
       <div>
       <div className="flex flex-row items-center justify-between ">
-      <h2 className="font-black text-lg pl-12 mt-10 mb-3">Type</h2>
+      <h2 className="font-black text-lg pl-12 mt-10 mb-3  flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M7.854 1.49a.5.5 0 0 0-.707 0L1.49 7.146a.5.5 0 0 0 0 .708l5.657 5.656a.5.5 0 0 0 .707 0l5.657-5.656a.5.5 0 0 0 0-.708L7.854 1.49ZM7.5 2.55L2.55 7.5l4.95 4.95v-9.9Z" clip-rule="evenodd"/></svg><p className="ml-2">Type</p></h2>
       <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("alcholic")}>{showalcholic ? "↑" : "↓"}</button>
     </div>
     {!showalcholic_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
@@ -88,7 +89,8 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
       </div>}
 
         <div className="flex flex-row items-center justify-between ">
-          <h2 className="font-black text-lg pl-12 mt-10 mb-3">Glasses</h2>
+          <h2 className="font-black text-lg pl-12 mt-10 mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="currentColor" d="M768 64a192 192 0 1 1-69.952 370.88L480 725.376V896h96a32 32 0 1 1 0 64H320a32 32 0 1 1 0-64h96V725.376L76.8 273.536a64 64 0 0 1-12.8-38.4v-10.688a32 32 0 0 1 32-32h71.808l-65.536-83.84a32 32 0 0 1 50.432-39.424l96.256 123.264h337.728A192.064 192.064 0 0 1 768 64zM656.896 192.448H800a32 32 0 0 1 32 32v10.624a64 64 0 0 1-12.8 38.4l-80.448 107.2a128 128 0 1 0-81.92-188.16v-.064zm-357.888 64l129.472 165.76a32 32 0 0 1-50.432 39.36l-160.256-205.12H144l304 404.928l304-404.928H299.008z"/></svg><p className="ml-2">Glasses</p></h2>
           <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("glass")}>{showglasses ? "↑" : "↓"}</button>
         </div>
         {!showglasses_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
@@ -100,7 +102,8 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
           </div>}
 
         <div className="flex flex-row items-center justify-between ">
-          <h2 className="font-black text-lg pl-12 mt-10 mb-3">Ingredients</h2>
+          <h2 className="font-black text-lg pl-12 mt-10 mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M16 13h-.5c-.7-1.3-1.2-3-1.7-4.7l.9.9c2.7 2.1 5.1 1.7 5.1 1.7s.7-3.8-2-5.8c-2.3-1.8-4.4-1.8-5-1.7c-.1-.6-.1-1.1-.2-1.5l-1.4.1c0 3.2-2.7 9.1-3.6 11c-2 .2-3.6 1.9-3.6 4c0 2.2 1.8 4 4 4c1.1 0 2-.4 2.7-1.1c-.4-.9-.7-1.9-.7-2.9s.3-2 .7-2.9c-.4-.4-1-.7-1.5-.9c.7-1.5 1.9-4.2 2.7-6.8c.4 2.3 1.2 5 2.2 7.1c-1.2.7-2.1 2-2.1 3.5c0 2.2 1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4m-8 2.5c-.8 0-1.5.7-1.5 1.5h-1c0-1.4 1.1-2.5 2.5-2.5v1m8 0c-.8 0-1.5.7-1.5 1.5h-1c0-1.4 1.1-2.5 2.5-2.5v1Z"/></svg><p className="ml-2">Ingredients</p></h2>
           <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("ingr")}>{showingredients ? "↑" : "↓"}</button>
         </div>
         {!showingredient_choiceresults ?<div className="flex item-center justify-center">  <img src={loading} alt="loading" /></div> :
