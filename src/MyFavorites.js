@@ -147,7 +147,7 @@ const fetchreddit = async (item) => {
             }
           </div>
         </section>  } </div> :
-        <div className="mt-64 flex justify-center"><img className="w-16" src={loading} alt="loading" /></div>
+        <div className="mt-64 flex justify-center "><img className="w-16" src={loading} alt="loading" /></div>
         }
         {redditfavorites.length > 0 ? <div>{ redditfavorites[0] === "None" ?
         <div className="border-2"><p>No saved subreddits ....</p></div> : <section>
@@ -166,7 +166,7 @@ const fetchreddit = async (item) => {
             }
           </div>
         </section>  } </div> :        
-        <div className="mt-64 flex justify-center"><img className="w-24" src={loading} alt="loading" /></div>
+        <div className="mt-64 flex justify-center h-screen"><img className="h-28" src={loading} alt="loading" /></div>
 
         }
       </article>}

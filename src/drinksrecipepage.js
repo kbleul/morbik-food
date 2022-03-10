@@ -79,8 +79,9 @@ const RecipePage = ({ drinkid, similardrinks }) => {
                     <h4 className="text-center border-b-2 font-black pl-2 w-3/5" key={item.strDrink}>{item.strDrink} </h4>
   
                   {   isfavorite ?
-                    <button key={`${item.idMeal}${item.idMeal}1`} className="pr-4 text-red-400" onClick={() => {set_isfavorite(false); removeFavorite("drink" , item.idMeal)} }>Remove from Favorites</button> :
-                    <button className="pr-4 text-red-400 hover:border-b" onClick={() => {set_isfavorite(true);saveFavorites("drink",item.idDrink)}}>Add to Favories</button>
+                    <button key={`${item.idDrink}${item.idDrink}1`} className="pr-4 text-red-400 ml-8 self-end hover:border-b-2 hover:border-red-300 flex" onClick={() => {set_isfavorite(false); removeFavorite("drink" , item.idDrink)} }><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M11 15h2V9h3l-4-5l-4 5h3z" /><path fill="currentColor" d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z" /></svg><p className="ml-2">Saved</p></button> :
+
+                    <button key={`${item.idDrink}${item.idDrink}2`} className="text-red-400 border-b-2 border-red-300 hover:opacity-70 ml-8 self-end flex " onClick={() => { set_isfavorite(true); saveFavorites("drink", item.idDrink) }}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5l-5-5l1.41-1.41L11 12.67V3h2v9.67z" /></svg><p className="ml-2">Add to Favories</p></button>
                   }
                   </div>
 

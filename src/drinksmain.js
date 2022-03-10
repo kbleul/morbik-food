@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipePage from './drinksrecipepage'
 import { Link } from "react-router-dom"
+import loading from "./imgs/loading.gif"
+
 
 
 const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_page, set_togglerecipe_page }) => {
@@ -78,10 +80,13 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       </div>
 
       {togglerecipe_page ? <RecipePage drinkid={recipefor} similardrinks={frontdrink_list} /> :
+      
+      <div>
+      {frontdrink_list.length === 0 ? <div className="h-screen flex justify-center items-center"><img src={loading} alt="loading" /></div> :
         <section className="grid grid-cols-3 gap-2 m-16 ml-10">
           {frontdrink_list[0] === "No Drink Found Error" ? <div><p>No available drink for this ingrident.</p></div> :
             frontdrink_list.map(item => (
-              <div key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
+              <div className="hover:brightness-90" key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
                 <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
                 <p className="font-light text-center" key={item.strDrink}>{item.strDrink}</p>
 
@@ -89,6 +94,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
             ))
           }
         </section>}
+        </div>}
     </article>
   )
 }

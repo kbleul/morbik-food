@@ -6,6 +6,8 @@ import drink_subredddits_set from "./drinks_subredditlist"
 import saveFavorites from './savefavorites_function'
 import removeFavorite from "./removefavorites_function"
 import Footer from "./fotter"
+import loading from './imgs/loading.gif'
+
 
 
 
@@ -80,7 +82,7 @@ const Subreddit = () => {
             </nav>
             <main className="col-start-3 col-end-9 mt-16">
 
-                {subreddit.length > 0 && <div>
+                {subreddit.length === 0 ? <div className="h-screen flex justify-center "><img src={loading} alt="loading" className="h-28" /> </div> : <div>
                     <div className="flex justify-center ">
                         <a href={`https://www.reddit.com/r/${subreddit[0].data.subreddit}/`} target="_blank" rel="noreferrer" >
                             <h2 className="text-6xl text-gray-400 font-bold" key={subreddit[0].data.subreddit}>{subreddit[0].data.subreddit_name_prefixed}</h2></a>

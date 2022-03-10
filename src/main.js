@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipePage from './recipepage'
 import { Link } from "react-router-dom"
+import loading from "./imgs/loading.gif"
 
 
 const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_page, set_togglerecipe_page }) => {
@@ -71,17 +72,22 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       </div>
 
       {togglerecipe_page ? <RecipePage foodid={recipefor} similarfoods={frontfood_list} /> :
-        <section className="grid grid-cols-3 gap-2 m-16 ml-10">
-          {frontfood_list[0] === "No Food Found Error" ? <div><p>No available food for this ingrident.</p></div> :
-            frontfood_list.map(item => (
-              <div key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
-                <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
-                <p className="font-light text-center" key={item.strMeal}>{item.strMeal}</p>
-
-              </div>
-            ))
-          }
-        </section>}
+        <div>
+        
+          {frontfood_list.length === 0 ? <div className="h-screen flex justify-center items-center"><img src={loading} alt="loading" /></div> :
+          <section className="grid grid-cols-3 gap-2 m-16 ml-10">
+            {frontfood_list[0] === "No Food Found Error" ? <div><p>No available food for this ingrident.</p></div> :
+              frontfood_list.map(item => (
+                <div className="hover:brightness-90" key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
+                  <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
+                  <p className="font-light text-center" key={item.strMeal}>{item.strMeal}</p>
+                </div>
+              ))
+            }
+          </section>
+         }
+      </div>
+      }
     </article>
   )
 }
