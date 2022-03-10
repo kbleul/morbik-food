@@ -37,7 +37,7 @@ const SubredditListPage = () => {
     }, [isfood])
 
 
-    return (<div className="mt-36">
+    return (<div className="mt-24">
         <div className="flex justify-center mb-12">
             <button className={isfood ? "font-black underline" : "font-light hover:bg-amber-200 px-4"} onClick={() => {setreddit([]); set_isfood(true)}}>Foods</button>
             <button className={isfood ? "ml-8 font-light hover:bg-amber-200 px-4" : "ml-8 font-black underline px-4" } onClick={() =>{setreddit([]); set_isfood(false)}}>Drinks</button>

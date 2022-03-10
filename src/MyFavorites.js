@@ -117,7 +117,7 @@ const fetchreddit = async (item) => {
     </div>  }
     { (drink_recipefor === "" &&  recipefor === "") &&    <article>
         {foodfavorites.length > 0 && <div>{ foodfavorites[0] === "None" ?
-        <div><p>No saved food recipes found ....</p></div> : <section>
+        <div><p>No saved food recipes found ....</p></div> : <section className="h-screen overflow-y-scroll">
           <h1>Favorite Foods</h1>
           <div className="grid grid-cols-3 gap-10">
     
