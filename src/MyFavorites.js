@@ -19,6 +19,9 @@ const MyFavorites = () => {
   const [recipefor , set_recipefor] = useState("");
   const [drink_recipefor , set_drink_recipefor] = useState("");
   const [reloadpage, set_reloadpage] = useState(1)
+  const [type , set_type] = useState("food")
+  const [leftimg, set_leftimg] = useState([]);
+  let [leftcounter, set_leftcounter] = useState(1);
 
 
   let foodfavs_arr = [];
@@ -30,18 +33,23 @@ const MyFavorites = () => {
   let temparr2 = []
   let temparr3 = []
 
-
+console.log("reload")
   const fetchfood = async (item) => {
   const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item}`);
   temparr.push(result.data.meals[0])
+
+     if(foodfavs_arr.indexOf(item) === 0) {  
+       set_leftimg([result.data.meals[0].strMealThumb , result.data.meals[0].strMeal , result.data.meals[0].strTags]) 
+      }
+
                if(temparr.length === foodfavs_arr.length)
-                  {  set_foodfavorites(temparr); }
+                  {  set_foodfavorites(temparr);  }
 }
+              
 
 const fetchdrink = async (item) => {
   const result = await axios(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${item}`);
   temparr2.push(result.data.drinks[0])
-             console.log(item)
                if(temparr2.length === drinkfavs_arr.length)
                   {  set_drinkfavorites(temparr2)}
 }
@@ -53,9 +61,10 @@ const fetchreddit = async (item) => {
                   {  set_redditfavorites(temparr3)}
 }
 
-  useEffect(() => { console.log("reloaded")
+  useEffect(() => { 
     if (localStorage.getItem("SavedFoods")) {
       foodfavs_arr = localStorage.getItem("SavedFoods").split(",");
+      console.log("length" + foodfavs_arr)
        foodfavs_arr.map(item => {
         fetchfood(item);
     })
@@ -106,7 +115,25 @@ const fetchreddit = async (item) => {
     }
   }
 
-  return (<article >
+  const setleft_imgfunc = goto => {
+     if(goto === "next"){ 
+        set_leftcounter(leftcounter + 1);
+          if(leftcounter === foodfavorites.length - 1) { set_leftcounter(0);}
+      }
+     else { 
+      set_leftcounter(leftcounter - 1);
+         if(leftcounter === 0) { set_leftcounter(0);}
+      }
+      set_leftimg([foodfavorites[leftcounter].strMealThumb , foodfavorites[leftcounter].strMeal, foodfavorites[leftcounter].strTags]);
+  }
+
+  return (<article  className="mt-18">
+    <div className="flex justify-center mt-16">
+    <button className={type ? "font-black underline" : "font-light hover:bg-amber-200 px-4"} >Foods</button>
+    <button className={type ? "ml-8 font-light hover:bg-amber-200 px-4" : "ml-8 font-black underline px-4" }>Drinks</button>
+    <button className={type ? "ml-8 font-light hover:bg-amber-200 px-4" : "ml-8 font-black underline px-4" } >Reddits</button>
+  </div>
+
     {drink_recipefor !== "" &&  <div className="pl-32 mt-16">
     <button onClick = {() => {set_reloadpage(reloadpage + 1); set_drink_recipefor(""); }}>←</button>
     <DrinkRecipePage drinkid={drink_recipefor} similardrinks={frontfood_list} /></div>}
@@ -117,22 +144,46 @@ const fetchreddit = async (item) => {
     </div>  }
     { (drink_recipefor === "" &&  recipefor === "") &&    <article>
         {foodfavorites.length > 0 && <div>{ foodfavorites[0] === "None" ?
-        <div><p>No saved food recipes found ....</p></div> : <section className="h-screen overflow-y-scroll">
-          <h1>Favorite Foods</h1>
-          <div className="grid grid-cols-3 gap-10">
+        <div><p>No saved food recipes found ....</p></div> : <section className="h-screen ">
+          <h1 className="ml-8 text-5xl font-light font-serif">Favorite Foods</h1>
+          <div className="grid grid-cols-3 gap-3 ">
     
-            {foodfavorites.map(item => (
-              <div key={item.idMeal} onClick={() => viewFavorite("food",item.idMeal , item.strCategory)}>
+             <div className="col-span-1 h-[80vh] flex justify-center items-center">
+             <div>
+               <img className="p-4" src={leftimg[0]} alt={leftimg[1]} />
+               <h3 className="font-light text-center px-2" key={leftimg[1]}>{leftimg[1]}</h3>
+               <p className="font-light text-center" key={`${leftimg[1]}${leftimg[1]}`}>{leftimg[2] ? `Tags : ${leftimg[2]}` : "Tags : "}</p>
+             </div>
+             <div className="text-4xl font-extrabold">
+             <button className="text-green-600 hover:text-gray-500" onClick = {() => setleft_imgfunc("next")}>→</button>
+              <button className="text-rose-600 hover:text-gray-500" onClick = {() => setleft_imgfunc("back")}>←</button>
+             </div>
+             </div>
+             <section className="h-[80vh] overflow-y-scroll col-span-2 grid grid-cols-3 gap-1  ">
+                           {foodfavorites.map(item => (
+              <div className="w-11/12 hover:brightness-90" key={item.idMeal} onClick={() => viewFavorite("food",item.idMeal , item.strCategory)}>
                 <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
-                <h3 key={item.strMeal}>{item.strMeal}</h3>
-                <p key={`${item.strMeal}${item.idMeal}`}>{item.strTags ? `${item.strTags}` : ""}</p>
               </div>
             ))
             }
+            </section>
+
           </div>
         </section>}</div>
         }
-        {drinkfavorites.length > 0 ? <div>{ drinkfavorites[0] === "None" ?
+      
+      </article>}
+
+  <Fotter />
+
+  </article>
+  )
+}
+
+export default MyFavorites
+
+/*
+  {drinkfavorites.length > 0 ? <div>{ drinkfavorites[0] === "None" ?
         <div><p>No saved drinks recipes found ....</p></div> : <section>
           <h1>Favorite Drinks</h1>
           <div className="grid grid-cols-3 gap-10">
@@ -169,12 +220,5 @@ const fetchreddit = async (item) => {
         <div className="mt-64 flex justify-center h-screen"><img className="h-28" src={loading} alt="loading" /></div>
 
         }
-      </article>}
 
-  <Fotter />
-
-  </article>
-  )
-}
-
-export default MyFavorites
+  */
