@@ -29,7 +29,8 @@ const Subreddit = () => {
 
                 if (localStorage.getItem("SavedSubReddits")) {
                     favoritereddits = localStorage.getItem("SavedSubReddits").split(",");
-                    if (favoritereddits.includes(slug)) { set_isfavorite(true); }
+                    if (favoritereddits.includes(slug)) { set_isfavorite(true); console.log(favoritereddits)}
+                    else { set_isfavorite(false); console.log(favoritereddits)}
                 }
 
                 set_subreddit(result.data.data.children);
@@ -83,9 +84,10 @@ const Subreddit = () => {
             <main className="col-start-3 col-end-9 mt-16">
 
                 {subreddit.length === 0 ? <div className="h-screen flex justify-center "><img src={loading} alt="loading" className="h-28" /> </div> : <div>
-                    <div className="flex justify-center ">
+                    <div className="flex justify-center">
                         <a href={`https://www.reddit.com/r/${subreddit[0].data.subreddit}/`} target="_blank" rel="noreferrer" >
-                            <h2 className="text-6xl text-gray-400 font-bold" key={subreddit[0].data.subreddit}>{subreddit[0].data.subreddit_name_prefixed}</h2></a>
+                            <h2 className="text-6xl text-gray-400 font-bold" key={subreddit[0].data.subreddit}>{subreddit[0].data.subreddit_name_prefixed}</h2>
+                            <p className="pt-3 text-gray-400 text-sm text-center">{subreddit[0].data.subreddit_subscribers ? `Subscribers - ${subreddit[0].data.subreddit_subscribers}` : ""}</p></a>
                         {isfavorite ?
 
                             <button key={`${subreddit[0].data.subreddit}${subreddit[0].data.subreddit}1`} className="pr-4 text-red-400 ml-8 self-end hover:border-b-2 hover:border-red-300 flex" onClick={() => { set_isfavorite(false); removeFavorite("reddit", subreddit[0].data.subreddit) }}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M11 15h2V9h3l-4-5l-4 5h3z" /><path fill="currentColor" d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z" /></svg><p className="ml-2">Saved</p></button> :
