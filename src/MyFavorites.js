@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import loading from "./imgs/loading.gif"
@@ -35,6 +35,7 @@ const MyFavorites = () => {
   let temparr = []
   let temparr2 = []
   let temparr3 = []
+
 
   const fetchfood = async (item) => {
     const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item}`);

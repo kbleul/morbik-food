@@ -11,6 +11,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
 
   const [showareas, set_showareas] = useState(false);
   const [showingredients, set_showingredients] = useState(true);
+  const [picked , set_picked] = useState()
 
 
   const getCatagories = async () => {
@@ -65,7 +66,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         {!showarea_choiceresults ?<div className="flex item-center justify-center"> <img src={loading} alt="loading" /></div> :
           <div className={showareas ? "flex flex-col items-center" : "hidden"}>
             {area_choiceresults.map(item => (
-              <button className="border-b px-4 py-3 w-3/4 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a") }}
+              <button className={picked === item.strArea ? "border-b px-4 py-3 w-3/4 font-bold border-l-2 border-l-green-500" : "border-b px-4 py-3 w-3/4 hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); setnavChoice(item.strArea); set_choicetype("a"); set_picked(item.strArea) }}
                 key={item.strArea}>{item.strArea}</button>
             ))}
           </div>}
@@ -73,12 +74,12 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         <div className="flex flex-row items-center justify-between ">
           <h2 className="font-black text-lg pl-12 mt-10 mb-3 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M16 13h-.5c-.7-1.3-1.2-3-1.7-4.7l.9.9c2.7 2.1 5.1 1.7 5.1 1.7s.7-3.8-2-5.8c-2.3-1.8-4.4-1.8-5-1.7c-.1-.6-.1-1.1-.2-1.5l-1.4.1c0 3.2-2.7 9.1-3.6 11c-2 .2-3.6 1.9-3.6 4c0 2.2 1.8 4 4 4c1.1 0 2-.4 2.7-1.1c-.4-.9-.7-1.9-.7-2.9s.3-2 .7-2.9c-.4-.4-1-.7-1.5-.9c.7-1.5 1.9-4.2 2.7-6.8c.4 2.3 1.2 5 2.2 7.1c-1.2.7-2.1 2-2.1 3.5c0 2.2 1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4m-8 2.5c-.8 0-1.5.7-1.5 1.5h-1c0-1.4 1.1-2.5 2.5-2.5v1m8 0c-.8 0-1.5.7-1.5 1.5h-1c0-1.4 1.1-2.5 2.5-2.5v1Z"/></svg><p className="ml-2 ">Ingredients</p></h2>
-          <button className="border-b text-lg  mt-10 mb-3 mr-8" onClick={() => showChoices("ingr")}>{showingredients ? "↑" : "↓"}</button>
+          <button className="border-b text-lg mt-10 mb-3 mr-8 hover:text-red-400" onClick={() => showChoices("ingr")}>{showingredients ? "↑" : "↓"}</button>
         </div>
         {!showingredient_choiceresults ?<div className="flex item-center justify-center">  <img src={loading} alt="loading" /></div> :
           <div className={showingredients ? "grid grid-cols-2" : "hidden"}>
             {ingredient_choiceresults.map(item => (
-              <button className="border-b px-4 py-4 w-4/4 ml-2 hover:border-b-amber-500" onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient); set_choicetype("i") }}
+              <button className={picked === item.strIngredient ? "ml-2 border-b px-4 py-3 w-3/4 font-bold border-l-2 border-l-green-500" : "border-b px-4 py-4 w-4/4 ml-2 hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient); set_choicetype("i"); set_picked(item.strIngredient) }}
                 key={item.strIngredient}>{item.strIngredient}</button>
             ))}
           </div>}

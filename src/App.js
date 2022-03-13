@@ -1,15 +1,15 @@
+
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom"
 import RecipeContent from "./recipecontent"
 import DrinkRecipeContent from "./drinkrecipecontent"
 import RedditPage from "./redditpage"
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom"
 import Header from "./header";
 import SubredditListPage from './subredditlistpage'
 import Subreddit from "./subreddit"
 import MyFavorites from "./MyFavorites"
 
-
 const App = () => {
-
+ 
   return (<BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} >
@@ -33,14 +33,15 @@ const App = () => {
 
 const Home = () => {
 
-
   return (
     <div className="">
       <div className="">
-        <Header />
-      </div>
+       
+         <Header />
 
-      <Outlet />
+      </div>
+        <Outlet/>
+ 
     </div>
   );
 }

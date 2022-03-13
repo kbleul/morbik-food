@@ -79,7 +79,7 @@ const Subreddit = () => {
         <article className="grid grid-cols-8 gab-3">
 
             <nav className="col-start-1 col-end-3  ">
-                <RedditNavigation />
+                <RedditNavigation picked = {slug}/>
             </nav>
             <main className="col-start-3 col-end-9 mt-16">
 
@@ -138,7 +138,7 @@ const Subreddit = () => {
     )
 }
 
-const RedditNavigation = () => {
+const RedditNavigation = ({picked}) => {
 
     const [show_foodsubreddit, setshow_foodsubreddit] = useState(false);
     const [show_drinksubreddit, setshow_drinksubreddit] = useState(true);
@@ -180,7 +180,7 @@ const RedditNavigation = () => {
                     foodsubreddit_arr.map(item => (
                         <Link key={`${item}key`} to={`/reddit/${item}`} >
                             <div key={`${item}1`} className="flex item-center justify-center">
-                                <button key={item} className=" w-3/4 border-b px-4 py-3  hover:border-b-amber-500">{item}</button>
+                                <button key={item} className={picked === item ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500" :" w-3/4 border-b px-4 py-3  hover:border-b-amber-500"}>{item}</button>
                             </div>
                         </Link>
                     ))
@@ -197,7 +197,7 @@ const RedditNavigation = () => {
                     drinksubreddit_arr.map(item => (
                         <Link key={`${item}key`} to={`/reddit/${item}`} >
                             <div key={`${item}1`} className="flex item-center justify-center">
-                                <button key={item} className="w-3/4 border-b px-4 py-3 hover:border-b-amber-500">{item}</button>
+                                <button key={item} className={picked === item ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500" :" w-3/4 border-b px-4 py-3  hover:border-b-amber-500"}>{item}</button>
                             </div>
                         </Link>
                     ))
