@@ -9,7 +9,7 @@ const RecipeContent = () => {
   //Categories, Area, Ingredients (c,i,a)
   const [showrecipe_page, set_showrecipe_page] = useState(false);
 
-  return (<div className="grid grid-cols-8 gap-3 dark:bg-black-800 dark:text-white ">
+  return (<div className="grid grid-cols-8 gap-3 dark:bg-gray-800 dark:text-white ">
     <nav className="col-start-1 col-end-3 row-start-2 row-end-2 mt-10 ">
       <Navigation setnavChoice={set_selectedCatagory} set_choicetype={set_catagorytype} set_togglerecipe_page={set_showrecipe_page} />
     </nav>

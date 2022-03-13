@@ -6,7 +6,7 @@ import drink_subredddits_set from "./drinks_subredditlist"
 import saveFavorites from './savefavorites_function'
 import removeFavorite from "./removefavorites_function"
 import Footer from "./fotter"
-import loading from './imgs/loading.gif'
+import loading from './imgs/loading_.gif'
 
 
 
@@ -76,14 +76,14 @@ const Subreddit = () => {
     }, [subreddit])
 
     return (
-        <article className="grid grid-cols-8 gab-3">
+        <article className="grid grid-cols-8 gab-3 mt-20">
 
             <nav className="col-start-1 col-end-3  ">
                 <RedditNavigation picked = {slug}/>
             </nav>
-            <main className="col-start-3 col-end-9 mt-16">
+            <main className="col-start-3 col-end-9 mt-20">
 
-                {subreddit.length === 0 ? <div className="h-screen flex justify-center "><img src={loading} alt="loading" className="h-28" /> </div> : <div>
+                {subreddit.length === 0 ? <div className="h-screen flex justify-center mt-12"><img src={loading} alt="loading" className="w-12 h-12" /> </div> : <div>
                     <div className="flex justify-center">
                         <a href={`https://www.reddit.com/r/${subreddit[0].data.subreddit}/`} target="_blank" rel="noreferrer" >
                             <h2 className="text-6xl text-gray-400 font-bold" key={subreddit[0].data.subreddit}>{subreddit[0].data.subreddit_name_prefixed}</h2>
@@ -111,12 +111,12 @@ const Subreddit = () => {
                                                 <h4 className="text-xl leading-7 font-mono pb-4" key={item.data.title}>{item.data.title}</h4>
                                                 {comment_isfetched && <section>{
                                                     subredditcontent_map[item.data.id] !== undefined &&
-                                                    <section key={subredditcontent_map[item.data.id].subreddit_id}>
+                                                    <section key={subredditcontent_map[item.data.id].subreddit_id} className="border-b dark:border-b-gray-500" >
                                                         <p className="font-serif leading-6" key={subredditcontent_map[item.data.id].selftext}>{subredditcontent_map[item.data.id].selftext}</p>
                                                         <div className="flex items-center justify-start pt-8 pb-4" key={`${subredditcontent_map[item.data.id].subreddit_id}${subredditcontent_map[item.data.id].subreddit_id}${item.data.author}`}>
                                                             <p className="w-8/12 font-light " key={item.data.author}>Submitted by : {item.data.author}</p>
-                                                            <button className="ml-4 text-sm px-6 py-1 font-semibold bg-amber-300" key={`${subredditcontent_map[item.data.id].num_comments} ${subredditcontent_map[item.data.id].subreddit_id}`} >{subredditcontent_map[item.data.id].num_comments} Comments </button>
-                                                        </div><hr />
+                                                            <button className="ml-4 text-sm px-6 py-1 font-semibold bg-amber-300 dark:text-black" key={`${subredditcontent_map[item.data.id].num_comments} ${subredditcontent_map[item.data.id].subreddit_id}`} >{subredditcontent_map[item.data.id].num_comments} Comments </button>
+                                                        </div>
                                                     </section>}
                                                 </section>}
                                             </div>
@@ -166,13 +166,13 @@ const RedditNavigation = ({picked}) => {
         }
     }
 
-    return (<section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto mt-24">
+    return (<section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto ">
 
         <div>
             <div className="flex flex-row items-center justify-between ">
 
                 <h2 className="font-black text-md pl-12 mt-10 mb-3 flex"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="currentColor" d="M128 352.576V352a288 288 0 0 1 491.072-204.224a192 192 0 0 1 274.24 204.48a64 64 0 0 1 57.216 74.24C921.6 600.512 850.048 710.656 736 756.992V800a96 96 0 0 1-96 96H384a96 96 0 0 1-96-96v-43.008c-114.048-46.336-185.6-156.48-214.528-330.496A64 64 0 0 1 128 352.64zm64-.576h64a160 160 0 0 1 320 0h64a224 224 0 0 0-448 0zm128 0h192a96 96 0 0 0-192 0zm439.424 0h68.544A128.256 128.256 0 0 0 704 192c-15.36 0-29.952 2.688-43.52 7.616c11.328 18.176 20.672 37.76 27.84 58.304A64.128 64.128 0 0 1 759.424 352zM672 768H352v32a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32v-32zm-342.528-64h365.056c101.504-32.64 165.76-124.928 192.896-288H136.576c27.136 163.072 91.392 255.36 192.896 288z" /></svg><p className="ml-2">Food Subreddits</p></h2>
-                <button className="border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400" onClick={() => showChoices("food")}>{show_foodsubreddit ? "↑" : "↓"}</button>
+                <button className="border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400 dark:border-b-gray-600" onClick={() => showChoices("food")}>{show_foodsubreddit ? "↑" : "↓"}</button>
             </div>
             <div className={show_foodsubreddit ? "flex flex-col" : "hidden"}>
 
@@ -180,7 +180,7 @@ const RedditNavigation = ({picked}) => {
                     foodsubreddit_arr.map(item => (
                         <Link key={`${item}key`} to={`/reddit/${item}`} >
                             <div key={`${item}1`} className="flex item-center justify-center">
-                                <button key={item} className={picked === item ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500" :" w-3/4 border-b px-4 py-3  hover:border-b-amber-500"}>{item}</button>
+                                <button key={item} className={picked === item ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500" :" w-3/4 border-b px-4 py-3  hover:border-b-amber-500 dark:border-b-gray-600 dark:hover:border-b-amber-500"}>{item}</button>
                             </div>
                         </Link>
                     ))
@@ -197,7 +197,7 @@ const RedditNavigation = ({picked}) => {
                     drinksubreddit_arr.map(item => (
                         <Link key={`${item}key`} to={`/reddit/${item}`} >
                             <div key={`${item}1`} className="flex item-center justify-center">
-                                <button key={item} className={picked === item ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500" :" w-3/4 border-b px-4 py-3  hover:border-b-amber-500"}>{item}</button>
+                                <button key={item} className={picked === item ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500" :" w-3/4 border-b px-4 py-3  hover:border-b-amber-500 dark:hover:border-b-amber-500 dark:border-b-gray-600"}>{item}</button>
                             </div>
                         </Link>
                     ))

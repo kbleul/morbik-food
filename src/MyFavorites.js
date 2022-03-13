@@ -2,7 +2,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import loading from "./imgs/loading.gif"
+import loading from "./imgs/loading_.gif"
 import Fotter from "./fotter.js"
 import RecipePage from './recipepage'
 import DrinkRecipePage from './drinksrecipepage'
@@ -36,6 +36,18 @@ const MyFavorites = () => {
   let temparr2 = []
   let temparr3 = []
 
+  //const mounted = useRef(false);
+
+  useEffect(() => {
+  //  mounted.current = true;
+    console.log("mounted")
+
+    return () => {
+       // mounted.current = false;
+    console.log("unmounted")
+
+    };
+}, []);
 
   const fetchfood = async (item) => {
     const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item}`);
@@ -155,14 +167,18 @@ const MyFavorites = () => {
      }
   }
 
-  return (<article className="mt-18">
+  return (<article className="mt-18 dark:bg-gray-800 dark:text-white">
 
   {(drink_recipefor === "" && recipefor === "") &&
-    <div className="flex justify-center mt-16">
-      <button className={type === "food" ? "font-black underline" : "font-light hover:bg-amber-200 px-4"} onClick={() => set_type("food")}>Foods</button>
-      <button className={type === "drink" ? "ml-8 font-black underline px-4" :"ml-8 font-light hover:bg-amber-200 px-4" } onClick={() => set_type("drink")}>Drinks</button>
-      <button className={type === "reddit" ? "ml-8 font-black underline px-4" : "ml-8 font-light hover:bg-amber-200 px-4" } 
-      onClick={() => set_type("reddit")}>Reddits</button>
+    <div className="w-3/5 ml-[35%] flex justify-center mt-11  pt-8">
+      <div>
+        <button className={type === "food" ? "font-black underline" : "font-light hover:bg-amber-200 hover:text-black px-4 dark:font-normal"} 
+        onClick={() => set_type("food")}>Foods</button>
+        <button className={type === "drink" ? "ml-8 font-black underline px-4" :"ml-8 font-light hover:bg-amber-200 hover:text-black px-4 dark:font-normal" } 
+        onClick={() => set_type("drink")}>Drinks</button>
+        <button className={type === "reddit" ? "ml-8 font-black underline px-4" : "ml-8 font-light hover:bg-amber-200 hover:text-black px-4 dark:font-normal" }
+        onClick={() => set_type("reddit")}>Reddits</button>
+      </div>
     </div>
 }
     {drink_recipefor !== "" && <div className="pl-32 mt-16">
@@ -182,18 +198,18 @@ const MyFavorites = () => {
               <h1 className="ml-16 text-5xl font-light font-serif">Favorite Foods</h1>
               <div className="grid grid-cols-3 gap-3 ">
 
-                <div className="col-span-1 h-[77vh] flex justify-center items-center">
+                <div className="col-span-1 h-[75vh] flex justify-center items-center">
                   <div>
                    {leftimg.length > 0 && <img className="p-4" src={leftimg[0]} alt={leftimg[1]} />}
-                    <h3 className="font-light text-center px-2" key={leftimg[1]}>{leftimg[1]}</h3>
-                    <p className="font-light text-center" key={`${leftimg[1]}${leftimg[1]}`}>{leftimg[2] ? `Tags : ${leftimg[2]}` : "Tags : "}</p>
+                    <h3 className="font-light text-center px-2 dark:font-normal" key={leftimg[1]}>{leftimg[1]}</h3>
+                    <p className="font-light text-center dark:font-normal" key={`${leftimg[1]}${leftimg[1]}`}>{leftimg[2] ? `Tags : ${leftimg[2]}` : "Tags : "}</p>
                   </div>
                   <div className="text-4xl font-extrabold">
                     <button className="text-green-600 hover:text-gray-500" onClick={() => setleft_imgfunc("next")}>→</button>
                     <button className="text-rose-600 hover:text-gray-500" onClick={() => setleft_imgfunc("back")}>←</button>
                   </div>
                 </div>
-                <section className="h-[77vh] overflow-y-scroll col-span-2 grid grid-cols-3 gap-1  ">
+                <section className="h-[75vh] overflow-y-scroll col-span-2 grid grid-cols-3 gap-1  ">
                   {foodfavorites.map(item => (
                     <div className="w-11/12 hover:brightness-90" key={item.idMeal} onClick={() => viewFavorite("food", item.idMeal, item.strCategory)}>
                       <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
@@ -203,7 +219,8 @@ const MyFavorites = () => {
                 </section>
               </div>
             </section>} </div> :
-            <div className="mt-8 flex justify-center h-screen"><img className="w-20 h-24" src={loading} alt="loading" /></div>
+            <div className="mt-8 flex justify-center h-screen mt-12">
+            <img className="w-12 h-12" src={loading} alt="loading" /></div>
 
           }
 
@@ -237,7 +254,8 @@ const MyFavorites = () => {
                 </section>
               </div>
             </section>} </div> :
-            <div className="mt-8 flex justify-center h-screen"><img className="w-20 h-24" src={loading} alt="loading" /></div>
+            <div className="flex justify-center h-screen mt-12">
+            <img className="w-12 h-12" src={loading} alt="loading" /></div>
           }
 
         </section>
@@ -252,7 +270,7 @@ const MyFavorites = () => {
           <div className="grid grid-cols-3 gap-10 h-[74vh] overflow-y-scroll text-center ">
     
             {redditfavorites.map(item => (
-              <Link className="w-3/4 ml-12 mb-8 border-2 border-black py-10 rounded-t-md rounded-r-full rounded-l-3xl hover:bg-yellow-100 even:bg-gray-100" key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
+              <Link className="w-3/4 ml-12 mb-8 border-2 border-black py-10 rounded-t-md rounded-r-full rounded-l-3xl hover:bg-yellow-100 even:bg-gray-100 dark:border-white dark:even:bg-gray-600 dark:hover:bg-black" key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
               <div className="border-b mr-4" key={item.subreddit_id}>
                 <h3 className="font-mono text-2xl leading-8" key={item.subreddit}>{item.subreddit_name_prefixed}</h3>
                 <p key={`${item.subreddit}${item.subreddit_subscribers}`}>{item.subreddit_subscribers ? `Subscribers ${item.subreddit_subscribers}` : ""}</p>
@@ -263,7 +281,8 @@ const MyFavorites = () => {
             }
           </div>
         </section>  } </div> :        
-        <div className="mt-8 flex justify-center h-screen"><img className="w-20 h-24" src={loading} alt="loading" /></div>
+        <div className="mt-12 flex justify-center h-screen">
+        <img className="w-12 h-12" src={loading} alt="loading" /></div>
 
         }
 
@@ -285,44 +304,3 @@ const MyFavorites = () => {
 }
 
 export default MyFavorites
-
-/*
-  {drinkfavorites.length > 0 ? <div>{ drinkfavorites[0] === "None" ?
-        <div><p>No saved drinks recipes found ....</p></div> : <section>
-          <h1>Favorite Drinks</h1>
-          <div className="grid grid-cols-3 gap-10">
-    
-            {drinkfavorites.map(item => (
-              <div key={item.idDrink} onClick={() => viewFavorite("drink",item.idDrink , item.strCategory)}>
-                <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
-                <h3 key={item.strDrink}>{item.strDrink}</h3>
-                <p  key={`${item.strAlcoholic}${item.strDrink}`}>{item.strTags ? `${item.strTags}` : ""}</p>
-              </div>
-            ))
-            }
-          </div>
-        </section>  } </div> :
-        <div className="mt-64 flex justify-center "><img className="w-16" src={loading} alt="loading" /></div>
-        }
-        {redditfavorites.length > 0 ? <div>{ redditfavorites[0] === "None" ?
-        <div className="border-2"><p>No saved subreddits ....</p></div> : <section>
-          <h1>Favorite Subreddits</h1>
-          <div className="grid grid-cols-3 gap-10">
-    
-            {redditfavorites.map(item => (
-              <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
-              <div className="border-b" key={item.subreddit_id}>
-                <h3 key={item.subreddit}>{item.subreddit_name_prefixed}</h3>
-                <p key={`${item.subreddit}${item.subreddit_subscribers}`}>{item.subreddit_subscribers ? `Subscribers ${item.subreddit_subscribers}` : ""}</p>
-                <p key={`${item.subreddit_id}${item.subreddit}`}>{item.subreddit_type}</p>
-              </div>
-              </Link>
-            ))
-            }
-          </div>
-        </section>  } </div> :        
-        <div className="mt-64 flex justify-center h-screen"><img className="h-28" src={loading} alt="loading" /></div>
-
-        }
-
-  */

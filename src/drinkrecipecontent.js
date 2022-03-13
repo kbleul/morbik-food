@@ -10,7 +10,7 @@ const DrinkRecipeContent = () => {
     // categories, glasses, ingredients or alcoholic (c,g,i,a)
     const [showrecipe_page, set_showrecipe_page] = useState(false);
 
-    return(<div className="grid grid-cols-8 gap-3">
+    return(<div className="grid grid-cols-8 gap-3 dark:bg-gray-800 dark:text-white">
     <nav className="col-start-1 col-end-3 row-start-2 row-end-2 mt-4">
             <Navigation setnavChoice={set_selectedCatagory} set_choicetype={set_catagorytype} set_togglerecipe_page={set_showrecipe_page} />
           </nav>

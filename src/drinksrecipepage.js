@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import loading from './imgs/loading.gif'
+import loading from './imgs/loading_.gif'
 import saveFavorites from './savefavorites_function'
 import removeFavorite from "./removefavorites_function"
 
@@ -64,8 +64,8 @@ const RecipePage = ({ drinkid, similardrinks }) => {
   useEffect(() => { set_isfavorite(false); getRecipe() }, [currentdrink_id])
 
   return (<section className="mt-8">
-    {recipedata.length === 0 ?<div className="flex item-center justify-center "> 
-    <img src={loading} alt="loading" className="" /> 
+    {recipedata.length === 0 ?<div className="flex item-center justify-center mt-8"> 
+    <img src={loading} alt="loading" className="w-12 h-12" /> 
     </div> :
       <div className="mt-16">
         {
@@ -90,7 +90,7 @@ const RecipePage = ({ drinkid, similardrinks }) => {
               </section>
 
               <section className="flex flex-col justify-items-center items-center">
-                {ingredientamount.length > 0 && <div className="bg-gray-100 rounded-r-lg w-5/12 my-20 py-8 pl-4 font-serif	">
+                {ingredientamount.length > 0 && <div className="bg-gray-100 rounded-r-lg w-5/12 my-20 py-8 pl-4 font-serif	dark:bg-gray-700 ">
                   <h2 className="text-center capitalize text-2xl leading-10 pb-8">Ingredients Needed</h2>
                   {ingredients.map(obj => (<p className="text-center leading-8" key={`${item.idDrink}${obj} ${item.idDrink}`}>{ingredientamount[ingredients.indexOf(obj)]} {obj}</p>))}
                 </div>}

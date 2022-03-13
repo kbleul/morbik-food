@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipePage from './drinksrecipepage'
 import { Link } from "react-router-dom"
-import loading from "./imgs/loading.gif"
+import loading from "./imgs/loading_.gif"
 
 
 
@@ -60,11 +60,11 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
 
   return (
-    <article className="ml-4 mt-8 ">
+    <article className="ml-4 mt-16 ">
       <section className=" ">
         {
           catagories.map(item => (
-            <button className="  text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 " key={item.strCategory} onClick={() => { set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
+            <button className="  text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black" key={item.strCategory} onClick={() => { set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
           ))
         }
       </section>
@@ -72,7 +72,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       <div className="mt-8 flex justify-center">
 
         <Link to={`/`} >
-          <button className="font-light px-4 hover:bg-amber-200">Foods</button>
+          <button className="font-light px-4 hover:bg-amber-200 dark:hover:text-black">Foods</button>
         </Link>
 
         <button className="ml-8 font-black underline ">Drinks</button>
@@ -82,7 +82,8 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       {togglerecipe_page ? <RecipePage drinkid={recipefor} similardrinks={frontdrink_list} /> :
       
       <div>
-      {frontdrink_list.length === 0 ? <div className="h-screen flex justify-center items-center"><img src={loading} alt="loading" /></div> :
+      {frontdrink_list.length === 0 ? <div className="h-screen flex justify-center mt-8">
+         <img className="w-12 h-12" src={loading} alt="loading" /></div> :
         <section className="grid grid-cols-3 gap-2 m-16 ml-10">
           {frontdrink_list[0] === "No Drink Found Error" ? <div><p>No available drink for this ingrident.</p></div> :
             frontdrink_list.map(item => (

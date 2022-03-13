@@ -17,8 +17,8 @@ const Header = () => {
       </Link>
       <Toggle />
       <div className="w-1/5 ">
-        <Link to="/reddit" > <button className={"text-red-300 ml-16 hover:opacity-70 hover:border-b-2 hover:border-red-300"} >Reddit</button></Link>
-        <Link to="/myfavorites" > <button className={"text-red-300 ml-16 hover:opacity-70 hover:border-b-2 border-red-300"} >Favorites</button></Link>
+        <Link to="/reddit" > <button className={"text-red-300 ml-16 hover:border-b-2 hover:border-red-300 dark:text-red-600"} >Reddit</button></Link>
+        <Link to="/myfavorites" > <button className={"text-red-300 ml-16  hover:border-b-2 border-red-300 dark:text-red-600"} >Favorites</button></Link>
       </div>
     </header>
   )

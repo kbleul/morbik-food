@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipePage from './recipepage'
 import { Link } from "react-router-dom"
-import loading from "./imgs/loading.gif"
+import loading from "./imgs/loading_.gif"
 
 
 const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_page, set_togglerecipe_page }) => {
@@ -62,10 +62,10 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       </section>
 
       <div className="mt-8 flex justify-center">
-          <button className="font-extrabold underline ">Foods</button>
+          <button className="font-extrabold underline">Foods</button>
 
         <Link to={`/drinks`} >
-          <button className="ml-8 font-light hover:bg-amber-200 px-4">Drinks</button>
+          <button className="ml-8 font-light hover:bg-amber-200 px-4 dark:hover:text-black">Drinks</button>
         </Link>
 
 
@@ -74,7 +74,8 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       {togglerecipe_page ? <RecipePage foodid={recipefor} similarfoods={frontfood_list} /> :
         <div>
         
-          {frontfood_list.length === 0 ? <div className="h-screen flex justify-center items-center"><img src={loading} alt="loading" /></div> :
+          {frontfood_list.length === 0 ? <div className="h-screen flex justify-center mt-12">
+          <img className="w-12 h-12" src={loading} alt="loading" /></div> :
           <section className="grid grid-cols-3 gap-2 m-16 ml-10">
             {frontfood_list[0] === "No Food Found Error" ? <div><p>No available food for this ingrident.</p></div> :
               frontfood_list.map(item => (

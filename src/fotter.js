@@ -18,7 +18,7 @@ const Footer = () => {
                     <p className="italic leading-10 font-mono pl-48 hover:underline hover:decoration-gray-400"><a href="https://knotess.netlify.app" target="_blank" rel="noreferrer">K-Notes</a></p>
                 
                 </section>
-                <section className="w-4/12 flex justify-center items-center font-extrabold text-lg uppercase hover:border-l-2 hover:border-green-400">
+                <section className="ml-2 w-4/12 flex justify-center items-center font-extrabold text-lg uppercase hover:border-l-2 hover:border-green-400">
                     <h3>Checkout My Github - <a className="text-gray-400 decoration-2 hover:underline hover:decoration-green-500" href="https://github.com/kbleul" rel="noreferrer">here</a></h3>
 
                 </section>

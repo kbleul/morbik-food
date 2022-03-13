@@ -3,13 +3,8 @@ import { Outlet } from "react-router-dom"
 
 
 const RedditPage = () => {
-  return (<div className="">
+  return (<div className=" dark:text-white dark:bg-gray-800">
   <Outlet />
-    <main className="">
-    </main>
-
-
-   
   </div>)
 }
 
