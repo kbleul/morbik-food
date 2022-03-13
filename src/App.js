@@ -1,33 +1,48 @@
+
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom"
+import RecipeContent from "./recipecontent"
+import DrinkRecipeContent from "./drinkrecipecontent"
+import RedditPage from "./redditpage"
 import Header from "./header";
-import Footer from "./fotter";
-import Main from "./main";
-import Navigation from "./nav";
-import {useState} from 'react';
+import SubredditListPage from './subredditlistpage'
+import Subreddit from "./subreddit"
+import MyFavorites from "./MyFavorites"
 
-function App() {
+const App = () => {
+ 
+  return (<BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} >
+        <Route path="/" element={<RecipeContent />} />\
+        <Route path="/drinks" element={<DrinkRecipeContent />} />
+        <Route path="/reddit" element={<RedditPage />} >
+            <Route path="/reddit/" element={<SubredditListPage /> } />
+              <Route path=":slug" element={<Subreddit />} />
+        </Route>
+        <Route path="/myfavorites" element={<MyFavorites />} />
+            
+      </Route>
+  </Routes>
+        </BrowserRouter >)
+ 
+}
 
-  const [selectedCatagory , set_selectedCatagory]= useState("Beef");
-  const [catagoryType, set_catagorytype] = useState("c");
-  //Categories, Area, Ingredients (c,i,a)
-  const [showrecipe_page , set_showrecipe_page] = useState(false);
+
+
+const Home = () => {
 
   return (
-    <div className="grid grid-cols-8 gap-3">
-    <div className="col-span-9 ">
-      <Header />
-      </div>
-      <nav className="col-start-1 col-end-3 row-start-2 row-end-2 mt-12">
-       <Navigation setnavChoice={set_selectedCatagory} set_choicetype={set_catagorytype} set_togglerecipe_page={set_showrecipe_page}/>
-      </nav>
-      <main className="col-start-3 col-end-9 row-start-2 row-end-5 mt-12">
-        <Main navChoice={selectedCatagory} setChoice={set_selectedCatagory} choicetype={catagoryType}  set_choicetype={set_catagorytype} togglerecipe_page={showrecipe_page} set_togglerecipe_page={set_showrecipe_page}/>
-      </main>
+    <div className="dark:bg-gray-700">
+      <div className="">
+       
+         <Header />
 
-      <div className="col-start-3 col-end-9  ">
-      <Footer />
       </div>
+        <Outlet/>
+ 
     </div>
   );
 }
+
 
 export default App;
