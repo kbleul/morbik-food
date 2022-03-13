@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center fixed top-0 w-full z-20 h-16 border-b-2 bg-white dark:bg-black dark:border-0">
       <Link className="w-1/4 ml-8" to="/" >
-        <img src={theme === "light" ? logolight : logodark} alt="logo" className="mx-4 h-14" /> 
+        <img src={theme === "light" ? logolight : logodark} alt="logo" className="mx-4 h-14 brightness-125 hover:brightness-100" /> 
       </Link>
       <Toggle />
       <div className="w-1/5 ">

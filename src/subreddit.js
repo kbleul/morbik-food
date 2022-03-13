@@ -76,12 +76,12 @@ const Subreddit = () => {
     }, [subreddit])
 
     return (
-        <article className="grid grid-cols-8 gab-3 mt-20">
+        <article className="grid grid-cols-8 gab-3 mt-16">
 
             <nav className="col-start-1 col-end-3  ">
                 <RedditNavigation picked = {slug}/>
             </nav>
-            <main className="col-start-3 col-end-9 mt-20">
+            <main className="col-start-3 col-end-9 mt-12">
 
                 {subreddit.length === 0 ? <div className="h-screen flex justify-center mt-12"><img src={loading} alt="loading" className="w-12 h-12" /> </div> : <div>
                     <div className="flex justify-center">
@@ -111,7 +111,7 @@ const Subreddit = () => {
                                                 <h4 className="text-xl leading-7 font-mono pb-4" key={item.data.title}>{item.data.title}</h4>
                                                 {comment_isfetched && <section>{
                                                     subredditcontent_map[item.data.id] !== undefined &&
-                                                    <section key={subredditcontent_map[item.data.id].subreddit_id} className="border-b dark:border-b-gray-500" >
+                                                    <section key={subredditcontent_map[item.data.id].subreddit_id} className="border-b dark:border-b-gray-700" >
                                                         <p className="font-serif leading-6" key={subredditcontent_map[item.data.id].selftext}>{subredditcontent_map[item.data.id].selftext}</p>
                                                         <div className="flex items-center justify-start pt-8 pb-4" key={`${subredditcontent_map[item.data.id].subreddit_id}${subredditcontent_map[item.data.id].subreddit_id}${item.data.author}`}>
                                                             <p className="w-8/12 font-light " key={item.data.author}>Submitted by : {item.data.author}</p>
@@ -166,7 +166,7 @@ const RedditNavigation = ({picked}) => {
         }
     }
 
-    return (<section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto ">
+    return (<section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto mt-16">
 
         <div>
             <div className="flex flex-row items-center justify-between ">
@@ -190,7 +190,7 @@ const RedditNavigation = ({picked}) => {
             <div className="flex flex-row items-center justify-between ">
                 <h2 className="font-black  text-md pl-12 mt-10 mb-3 flex"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="currentColor" d="M768 64a192 192 0 1 1-69.952 370.88L480 725.376V896h96a32 32 0 1 1 0 64H320a32 32 0 1 1 0-64h96V725.376L76.8 273.536a64 64 0 0 1-12.8-38.4v-10.688a32 32 0 0 1 32-32h71.808l-65.536-83.84a32 32 0 0 1 50.432-39.424l96.256 123.264h337.728A192.064 192.064 0 0 1 768 64zM656.896 192.448H800a32 32 0 0 1 32 32v10.624a64 64 0 0 1-12.8 38.4l-80.448 107.2a128 128 0 1 0-81.92-188.16v-.064zm-357.888 64l129.472 165.76a32 32 0 0 1-50.432 39.36l-160.256-205.12H144l304 404.928l304-404.928H299.008z" /></svg>
                     <p className="ml-2">Drink Subreddits</p></h2>
-                <button className="border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400" onClick={() => showChoices("drink")}>{show_drinksubreddit ? "↑" : "↓"}</button>
+                <button className="border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400 dark:border-b-gray-600" onClick={() => showChoices("drink")}>{show_drinksubreddit ? "↑" : "↓"}</button>
             </div>
             <div className={show_drinksubreddit ? "flex flex-col" : "hidden"}>
                 {
