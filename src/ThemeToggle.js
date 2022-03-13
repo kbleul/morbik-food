@@ -1,8 +1,8 @@
 
-import React, {useContext} from 'reacr';
+import React, {useContext} from 'react';
 import { ThemeContext } from './ThemeContext';
 
- const Toogle = () => {
+ const Toggle = () => {
      const {theme , set_theme} = useContext(ThemeContext);
 
      return(<div className="transition duration-500 ease-in-out rounded-full p-2" >
@@ -16,3 +16,5 @@ import { ThemeContext } from './ThemeContext';
       }
      </div>);
  }
+
+ export default Toggle

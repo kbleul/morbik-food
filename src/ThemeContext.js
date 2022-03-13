@@ -22,9 +22,10 @@ import React , {useState , useEffect , createContext } from 'react'
        const rawSetTheme = (rawTheme) => {
          const root = window.document.documentElement;
          const isDark = rawTheme === 'dark';
+         console.log(root)
 
           root.classList.remove(isDark ? "light" : "dark");
-          root.classList.add(rawTheme);
+          root.classList.add(isDark ? "dark" : "light");
 
           localStorage.setItem('color-theme', rawTheme);
        };
@@ -33,6 +34,7 @@ import React , {useState , useEffect , createContext } from 'react'
 
        useEffect(() => { 
          rawSetTheme(theme)
+         console.log(theme)
        },[theme])
       
        return(

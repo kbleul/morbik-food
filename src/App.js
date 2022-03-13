@@ -34,7 +34,7 @@ const App = () => {
 const Home = () => {
 
   return (
-    <div className="">
+    <div className="dark:bg-gray-700">
       <div className="">
        
          <Header />
