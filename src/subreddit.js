@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, Link } from "react-router-dom"
 import axios from 'axios'
 import food_subredddits_set from "./food_subredditlist"
@@ -7,9 +7,6 @@ import saveFavorites from './savefavorites_function'
 import removeFavorite from "./removefavorites_function"
 import Footer from "./fotter"
 import loading from './imgs/loading_.gif'
-
-
-
 
 const Subreddit = () => {
 
@@ -20,6 +17,8 @@ const Subreddit = () => {
     const [a, seta] = useState(slug)
     const [isfavorite, set_isfavorite] = useState(false);
     let favoritereddits = [];
+
+
 
 
     useEffect(() => {

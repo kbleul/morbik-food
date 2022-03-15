@@ -1,11 +1,12 @@
 
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect , useContext} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import loading from "./imgs/loading_.gif"
 import Fotter from "./fotter.js"
 import RecipePage from './recipepage'
 import DrinkRecipePage from './drinksrecipepage'
+import location_context from "./locationcontext"
 
 
 const MyFavorites = () => {
@@ -25,7 +26,11 @@ const MyFavorites = () => {
   let [leftcounter, set_leftcounter] = useState(1);
   let [leftcounter_drink, set_leftcounter_drink] = useState(1);
 
+  const whereami_arr = useContext(location_context);
 
+
+
+  
 
   let foodfavs_arr = [];
   let drinkfavs_arr = [];
@@ -36,18 +41,13 @@ const MyFavorites = () => {
   let temparr2 = []
   let temparr3 = []
 
-  //const mounted = useRef(false);
-
   useEffect(() => {
-  //  mounted.current = true;
-    console.log("mounted")
 
-    return () => {
-       // mounted.current = false;
-    console.log("unmounted")
+    whereami_arr[1]("Favorite")
 
-    };
-}, []);
+    return () => {  whereami_arr[1]("Home")   };
+
+                  }, []);
 
   const fetchfood = async (item) => {
     const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item}`);
@@ -55,10 +55,7 @@ const MyFavorites = () => {
 
     if (foodfavs_arr.indexOf(item) === 0) {
       let arr = [result.data.meals[0].strMealThumb, result.data.meals[0].strMeal, result.data.meals[0].strTags];
-      set_leftimg(arr)
-      console.log(leftimg  )
-      console.log([result.data.meals[0].strMealThumb, result.data.meals[0].strMeal, result.data.meals[0].strTags])
-      
+      set_leftimg(arr);
     }
 
     if (temparr.length === foodfavs_arr.length) { set_foodfavorites(temparr); }
@@ -82,14 +79,11 @@ const MyFavorites = () => {
     if (temparr3.length === redditfavs_arr.length) { set_redditfavorites(temparr3) }
   }
 
-  console.log("ola_two")
-
   useEffect(() => { 
 
     if(type === "food"){
     if (localStorage.getItem("SavedFoods")) {
       foodfavs_arr = localStorage.getItem("SavedFoods").split(",");
-      console.log("length" + foodfavs_arr)
       foodfavs_arr.map(item => {
         fetchfood(item);
       })

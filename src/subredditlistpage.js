@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom"
 import list from "./food_subredditlist"
 import list_drink from "./drinks_subredditlist"
@@ -6,12 +6,11 @@ import axios from 'axios'
 import loading from './imgs/loading_.gif'
 import Footer from "./fotter"
 
-
 const SubredditListPage = () => {
 
     const [reddit, setreddit] = useState([]);
     const [isfood, set_isfood] = useState(true);
-
+ 
     useEffect(() => {
 
         let temparr = [];
