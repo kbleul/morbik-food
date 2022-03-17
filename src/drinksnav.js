@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import loading from './imgs/loading_.gif'
+import { findAllByDisplayValue } from '@testing-library/react';
 
 const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => {
 
@@ -14,9 +15,10 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
   const [showalcholic_choiceresults, set_showalcholic_choiceresults] = useState(false);
 
 
-  const [showalcholic, set_showalcholic] = useState(true);
-  const [showingredients, set_showingredients] = useState(false);
+  const [showalcholic, set_showalcholic] = useState(false);
   const [showglasses, set_showglasses] = useState(false);
+  const [showingredients, set_showingredients] = useState(true);
+
 
   const [picked , set_picked] = useState();
 
@@ -76,7 +78,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
 
 
   return (
-    <section className="fixed left-0 w-1/4 h-screen overflow-y-scroll overscroll-y-auto mt-16">
+    <section className=" md:h-screen md:overflow-y-scroll md:overscroll-y-auto md:overflow-auto mt-4 md:mt-16">
       <div>
         <div className="flex flex-row items-center justify-between ">
           <h2 className="font-black text-lg pl-12 mt-10 mb-3  flex items-center">
