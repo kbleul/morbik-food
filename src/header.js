@@ -5,7 +5,8 @@ import logodark from './imgs/logo/logodark.png'
 import Toggle from './ThemeToggle'
 import { ThemeContext } from "./ThemeContext"
 import location_context from "./locationcontext"
-import {tooglemain_menu} from "./tooglemenus"
+import {tooglemain_menu, toogleside_menu} from "./tooglemenus"
+
 
 
 
@@ -19,7 +20,7 @@ const Header = () => {
     
       <header className="flex  justify-between items-center fixed top-0 w-full z-20 h-16 border-b-2 bg-white dark:bg-black dark:border-0">
 
-          <button className="dark:text-white block w-1/4  md:hidden" ><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" /></svg></button>
+          <button onClick={toogleside_menu} id="burgermenu" className="dark:text-white block w-1/4  md:hidden" ><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" /></svg></button>
           <Link className="w-2/4 md:w-1/4 md:ml-8" to="/" >
             <img src={theme === "light" ? logolight : logodark} alt="logo" className="h-14 brightness-125 hover:brightness-100 md:mx-4 " />
           </Link>

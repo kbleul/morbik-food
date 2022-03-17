@@ -14,3 +14,15 @@ export const tooglemain_menu = () => {
           tooglebtn.classList.add("hidden") 
         }
 }
+
+export const toogleside_menu = () => {
+  let tooglebtn = document.querySelector("#sidenav");
+    if(tooglebtn.classList.contains("hidden"))
+    {
+      tooglebtn.classList.remove("hidden") 
+    }
+    else { 
+      tooglebtn.classList.add("hidden") 
+    }
+
+}
