@@ -3,6 +3,8 @@ import axios from 'axios'
 import RecipePage from './drinksrecipepage'
 import { Link } from "react-router-dom"
 import loading from "./imgs/loading_.gif"
+import Footer from "./fotter";
+
 
 
 
@@ -70,45 +72,45 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
 
 
-  return (
-    <article className="md:ml-4 mt-16 ">
-      <section className="flex overflow-x-scroll md:block">
-
-        {
-          catagories.map(item => (
-            <button className=" text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black" key={item} onClick={() => { set_choicetype("c"); setChoice(item); set_togglerecipe_page(false); }}>{item}</button>
-          ))
-        }
-      </section>
-
-      <div className="mt-4 md:mt-8 flex justify-center">
-
-        <Link to={`/`} >
-          <button className="font-light px-4 hover:bg-amber-200 dark:hover:text-black">Foods</button>
-        </Link>
-
-        <button className="ml-8 font-black underline ">Drinks</button>
-
-      </div>
-
-      {togglerecipe_page ? <RecipePage drinkid={recipefor} similardrinks={frontdrink_list} /> :
-      
-      <div>
-      {frontdrink_list.length === 0 ? <div className="h-screen flex justify-center mt-8">
-         <img className="w-12 h-12" src={loading} alt="loading" /></div> :
-        <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10">
-          {frontdrink_list[0] === "No Drink Found Error" ? <div><p>No available drink for this ingrident.</p></div> :
-            frontdrink_list.map(item => (
-              <div className="hover:brightness-90" key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
-                <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
-                <p className="font-light text-center  text-xs md:text-base" key={item.strDrink}>{item.strDrink}</p>
-
-              </div>
+  return (<div>
+    
+      <article className="md:ml-4 mt-16 ">
+        <section className="flex overflow-x-scroll md:overflow-hidden md:block">
+          {
+            catagories.map(item => (
+              <button className=" text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black" key={item} onClick={() => { set_choicetype("c"); setChoice(item); set_togglerecipe_page(false); }}>{item}</button>
             ))
           }
-        </section>}
-        </div>}
-    </article>
+        </section>
+        <div className="mt-4 md:mt-8 flex justify-center">
+          <Link to={`/`} >
+            <button className="font-light px-4 hover:bg-amber-200 dark:hover:text-black">Foods</button>
+          </Link>
+          <button className="ml-8 font-black underline ">Drinks</button>
+        </div>
+        {togglerecipe_page ? <RecipePage drinkid={recipefor} similardrinks={frontdrink_list} /> :
+    
+        <div>
+        {frontdrink_list.length === 0 ? <div className="h-screen flex justify-center mt-8">
+           <img className="w-12 h-12" src={loading} alt="loading" /></div> :
+          <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10">
+            {frontdrink_list[0] === "No Drink Found Error" ? <div><p>No available drink for this ingrident.</p></div> :
+              frontdrink_list.map(item => (
+                <div className="hover:brightness-90" key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
+                  <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
+                  <p className="font-light text-center  text-xs md:text-base" key={item.strDrink}>{item.strDrink}</p>
+                </div>
+              ))
+            }
+          </section>}
+          </div>}
+      </article>
+
+      <div>
+      <Footer />
+    </div>
+
+  </div>
   )
 }
 

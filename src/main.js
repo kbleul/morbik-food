@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipePage from './recipepage'
+import Footer from "./fotter";
 import { Link } from "react-router-dom"
 import loading from "./imgs/loading_.gif"
 
@@ -52,44 +53,47 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
 
   return (
-    <article className="md:ml-4 mt-16 ">
-      <section className="flex overflow-x-scroll md:block ">
-        {
-          catagories.map(item => (
-            <button className=" text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black " key={item.strCategory} onClick={() => { set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
-          ))
+    <div>
+      <article className="md:ml-2 mt-16 ">
+        <section className="flex overflow-x-scroll md:overflow-hidden md:block ">
+          {
+            catagories.map(item => (
+              <button className=" text-xs font-black bg-amber-400  rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black " key={item.strCategory} onClick={() => { set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
+            ))
+          }
+        </section>
+        <div className="mt-4 md:mt-8 flex justify-center">
+            <button className="font-extrabold underline">Foods</button>
+          <Link to={`/drinks`} >
+            <button className="ml-8 font-light hover:bg-amber-200 px-4 dark:hover:text-black">Drinks</button>
+          </Link>
+        </div>
+        {togglerecipe_page ? <RecipePage foodid={recipefor} similarfoods={frontfood_list} /> :
+          <div>
+      
+            {frontfood_list.length === 0 ? <div className="h-screen flex justify-center mt-12">
+            <img className="w-12 h-12" src={loading} alt="loading" /></div> :
+            <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10">
+              {frontfood_list[0] === "No Food Found Error" ? <div className="flex justify-center"><p>No available food for this ingrident.</p></div> :
+                frontfood_list.map(item => (
+                  <div className="hover:brightness-90" key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
+                    <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
+                    <p className="font-light text-center text-xs md:text-base" key={item.strMeal}>{item.strMeal}</p>
+                  </div>
+                ))
+              }
+            </section>
+           }
+        </div>
         }
-      </section>
+       
+      </article>
 
-      <div className="mt-4 md:mt-8 flex justify-center">
-          <button className="font-extrabold underline">Foods</button>
+      <div>
+      <Footer />
+    </div>
 
-        <Link to={`/drinks`} >
-          <button className="ml-8 font-light hover:bg-amber-200 px-4 dark:hover:text-black">Drinks</button>
-        </Link>
-
-
-      </div>
-
-      {togglerecipe_page ? <RecipePage foodid={recipefor} similarfoods={frontfood_list} /> :
-        <div>
-        
-          {frontfood_list.length === 0 ? <div className="h-screen flex justify-center mt-12">
-          <img className="w-12 h-12" src={loading} alt="loading" /></div> :
-          <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10">
-            {frontfood_list[0] === "No Food Found Error" ? <div className="flex justify-center"><p>No available food for this ingrident.</p></div> :
-              frontfood_list.map(item => (
-                <div className="hover:brightness-90" key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
-                  <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
-                  <p className="font-light text-center text-xs md:text-base" key={item.strMeal}>{item.strMeal}</p>
-                </div>
-              ))
-            }
-          </section>
-         }
-      </div>
-      }
-    </article>
+    </div>
   )
 }
 

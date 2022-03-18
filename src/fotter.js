@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
     return (
         <footer className="mt-40 bg-gray-100 dark:bg-gray-700">
-            <article className=" pb-24 pt-32 flex flex-col md:flex-row w-full">
+            <article className=" pb-20 pt-32 flex flex-col md:flex-row w-full">
                 <section className="md:w-4/12 text-center text-sm md:text-base md:mr-2 hover:border-b-2 hover:border-green-400">
                     <h3 className="font-extrabold text-xl md:text-2xl pb-2 font-serif uppercase">API<span className="lowercase">s</span> Used</h3><hr/>
                     <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400"><a href="https://www.themealdb.com/api.php" target="_blank" rel="noreferrer">TheMealDB API</a></p>
@@ -12,7 +12,7 @@ const Footer = () => {
                 </section>
                 <section className="md:w-4/12 text-center text-sm md:text-base hover:border-b-2 hover:border-green-400 my-12 md:my-0 ">
                     <h3 className="font-extrabold text-xl md:text-2xl pb-2 font-serif uppercase md:pl-16">Other Projects</h3><hr/>
-                    <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400 pl-16"><a href="https://morbik-movies.netlify.app/" target="_blank" rel="noreferrer">Morbik-Movies</a></p>
+                    <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400 "><a href="https://morbik-movies.netlify.app/" target="_blank" rel="noreferrer">Morbik-Movies</a></p>
                     <p className="italic leading-10 font-mono md:pl-48 hover:underline hover:decoration-gray-400"><a href="https://k-artis.netlify.app" target="_blank" rel="noreferrer">K-ARTis</a></p>
                     <p className="italic leading-10 font-mono md:pl-16 hover:underline hover:decoration-gray-400"><a href="https://seka-card-game.netlify.app" target="_blank" rel="noreferrer">Seka-Card-Game</a></p>
                     <p className="italic leading-10 font-mono md:pl-48 hover:underline hover:decoration-gray-400"><a href="https://knotess.netlify.app" target="_blank" rel="noreferrer">K-Notes</a></p>
