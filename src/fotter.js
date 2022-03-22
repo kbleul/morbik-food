@@ -13,9 +13,9 @@ const Footer = () => {
                 <section className="lg:w-4/12 text-center text-sm lg:text-base lg:hover:border-b-2 lg:hover:border-green-400 my-12 lg:my-0 ">
                     <h3 className="font-extrabold text-xl xl:text-2xl pb-2 font-serif uppercase lg:pl-16">Other Projects</h3><hr/>
                     <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400 "><a href="https://morbik-movies.netlify.app/" target="_blank" rel="noreferrer">Morbik-Movies</a></p>
-                    <p className="italic leading-10 font-mono xl:pl-48 hover:underline hover:decoration-gray-400"><a href="https://k-artis.netlify.app" target="_blank" rel="noreferrer">K-ARTis</a></p>
-                    <p className="italic leading-10 font-mono kl:pl-16 hover:underline hover:decoration-gray-400"><a href="https://seka-card-game.netlify.app" target="_blank" rel="noreferrer">Seka-Card-Game</a></p>
-                    <p className="italic leading-10 font-mono xl:pl-48 hover:underline hover:decoration-gray-400"><a href="https://knotess.netlify.app" target="_blank" rel="noreferrer">K-Notes</a></p>
+                    <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400"><a href="https://k-artis.netlify.app" target="_blank" rel="noreferrer">K-ARTis</a></p>
+                    <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400"><a href="https://seka-card-game.netlify.app" target="_blank" rel="noreferrer">Seka-Card-Game</a></p>
+                    <p className="italic leading-10 font-mono hover:underline hover:decoration-gray-400"><a href="https://knotess.netlify.app" target="_blank" rel="noreferrer">K-Notes</a></p>
                 
                 </section>
                 <section className="ml-2 lg:w-4/12 flex justify-center items-center font-extrabold text-lg uppercase hover:border-l-2 hover:border-green-400">

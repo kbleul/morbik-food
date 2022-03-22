@@ -30,28 +30,28 @@ const Subreddit = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchsubreddit = async () => {
-      try {
-        const result = await axios(`https://www.reddit.com/r/${slug}/.json`);
+  const fetchsubreddit = async () => {
+    try {
+      const result = await axios(`https://www.reddit.com/r/${slug}/.json`);
 
-        if (localStorage.getItem("SavedSubReddits")) {
-          favoritereddits = localStorage.getItem("SavedSubReddits").split(",");
-          if (favoritereddits.includes(slug)) {
-            set_isfavorite(true);
-            console.log(favoritereddits);
-          } else {
-            set_isfavorite(false);
-            console.log(favoritereddits);
-          }
+      if (localStorage.getItem("SavedSubReddits")) {
+        favoritereddits = localStorage.getItem("SavedSubReddits").split(",");
+        if (favoritereddits.includes(slug)) {
+          set_isfavorite(true);
+          console.log(favoritereddits);
+        } else {
+          set_isfavorite(false);
+          console.log(favoritereddits);
         }
-
-        set_subreddit(result.data.data.children);
-      } catch (e) {
-        console.log(`Fetch r/${slug} failed. ${e}`);
       }
-    };
 
+      set_subreddit(result.data.data.children);
+    } catch (e) {
+      console.log(`Fetch r/${slug} failed. ${e}`);
+    }
+  };
+
+  useEffect(() => {
     fetchsubreddit();
   }, [slug, a]);
 
@@ -294,7 +294,6 @@ const Subreddit = () => {
           <Footer />
         </div>
       </section>
-      >
     </article>
   );
 };
