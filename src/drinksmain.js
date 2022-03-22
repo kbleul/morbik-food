@@ -26,7 +26,6 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
               let newstr = "";
                 tempstr.forEach(str => { newstr += str;  })
                 temparr.push(newstr);
-                console.log(temparr)
             }) 
 
             set_catagories(temparr);

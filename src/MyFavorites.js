@@ -135,7 +135,7 @@ const MyFavorites = () => {
 
   const setleft_imgfunc = goto => {
     if(type === "food"){
-    if (goto === "next") {console.log(leftcounter)
+    if (goto === "next") {
       set_leftcounter(leftcounter + 1);
       if (leftcounter === foodfavorites.length - 1) { set_leftcounter(0); }
     }
@@ -146,7 +146,7 @@ const MyFavorites = () => {
     set_leftimg([foodfavorites[leftcounter].strMealThumb, foodfavorites[leftcounter].strMeal, foodfavorites[leftcounter].strTags]);
   }
      else if(type === "drink") {
-      if (goto === "next") {console.log(leftcounter)
+      if (goto === "next") {
         set_leftcounter_drink(leftcounter_drink + 1);
         if (leftcounter_drink ===drinkfavorites.length - 1) { set_leftcounter_drink(0); }
       }

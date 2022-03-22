@@ -2,7 +2,7 @@
 
  const removeFavorite = (type , id) => {
 
-    if(type === "food") { console.log(id)
+    if(type === "food") { 
     let temparr = localStorage.getItem("SavedFoods").split(",");
          temparr.splice(temparr.indexOf(id),1 );
          

@@ -23,7 +23,6 @@ const Subreddit = () => {
 
   useEffect(() => {
     whereami_arr[1]("Subreddit_page");
-    console.log(whereami_arr)
 
     return () => {
       whereami_arr[1]("Home");
@@ -38,10 +37,8 @@ const Subreddit = () => {
         favoritereddits = localStorage.getItem("SavedSubReddits").split(",");
         if (favoritereddits.includes(slug)) {
           set_isfavorite(true);
-          console.log(favoritereddits);
         } else {
           set_isfavorite(false);
-          console.log(favoritereddits);
         }
       }
 
