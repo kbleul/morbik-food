@@ -34,6 +34,7 @@ const App = () => {
 
 const Home = () => {
   const [whereami, set_whereami] = useState("Home");
+
   return (
     <div className="dark:bg-gray-700">
 

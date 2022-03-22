@@ -19,11 +19,7 @@ export const toogleside_menu = () => {
   let tooglebtn = document.querySelector("#sidenav");
 
     if(tooglebtn.classList.contains("hidden"))
-    {
-      tooglebtn.classList.remove("hidden") 
-    }
-    else { 
-      tooglebtn.classList.add("hidden") 
-    }
+    { tooglebtn.classList.remove("hidden") }
+    else {  tooglebtn.classList.add("hidden")  }
 
 }

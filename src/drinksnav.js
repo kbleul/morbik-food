@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import loading from './imgs/loading_.gif'
-import { findAllByDisplayValue } from '@testing-library/react';
+import {toogleside_menu} from "./tooglemenus"
+
 
 const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => {
 
@@ -78,7 +79,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
 
 
   return (
-    <section className=" md:h-screen md:overflow-y-scroll md:overscroll-y-auto md:overflow-auto mt-4 md:mt-16">
+    <section className="h-[90vh] overflow-y-scroll md:overscroll-y-auto md:overflow-auto mt-4 md:mt-16">
       <div>
         <div className="flex flex-row items-center justify-between ">
           <h2 className="font-black text-lg pl-12 mt-10 mb-3  flex items-center">
@@ -89,7 +90,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         <img className="w-10 h-10" src={loading} alt="loading" /></div> :
           <div className={showalcholic ? "flex flex-col items-center" : "hidden"}>
             {alcholic_choiceresults.map(item => (
-              <button className={picked === item.strAlcoholic ? "border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300" :"border-b px-2 py-3 w-3/4 hover:border-b-amber-500 dark:border-b-gray-300 dark:hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strAlcoholic); set_choicetype("a"); set_picked(item.strAlcoholic) }}
+              <button className={picked === item.strAlcoholic ? "border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300" :"border-b px-2 py-3 w-3/4 hover:border-b-amber-500 dark:border-b-gray-300 dark:hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strAlcoholic); set_choicetype("a"); set_picked(item.strAlcoholic); toogleside_menu();  }}
                 key={item.strAlcoholic}>{item.strAlcoholic}</button>
             ))}
           </div>}
@@ -103,7 +104,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         <img  className="w-10 h-10" src={loading} alt="loading" /></div> :
           <div className={showglasses ? "flex flex-col items-center" : "hidden"}>
             {glasses_choiceresults.map(item => (
-              <button className={picked === item.strGlass ? "border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300" :"border-b px-2 py-3 w-3/4 hover:border-b-amber-500 dark:border-b-gray-400  dark:hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strGlass); set_choicetype("g"); set_picked(item.strGlass) }}
+              <button className={picked === item.strGlass ? "border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300" :"border-b px-2 py-3 w-3/4 hover:border-b-amber-500 dark:border-b-gray-400  dark:hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strGlass); set_choicetype("g"); set_picked(item.strGlass); toogleside_menu(); }}
                 key={item.strGlass}>{item.strGlass}</button>
             ))}
           </div>}
@@ -116,7 +117,7 @@ const Navigation = ({ setnavChoice, set_choicetype, set_togglerecipe_page }) => 
         {!showingredient_choiceresults ? <div className="flex item-center justify-center mt-8">  <img  className="w-10 h-10" src={loading} alt="loading" /></div> :
           <div className={showingredients ? "grid grid-cols-2" : "hidden"}>
             {ingredient_choiceresults.map(item => (
-              <button className={picked === item.strIngredient1 ? "border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300" :"border-b px-2 py-4 w-4/4 ml-2 hover:border-b-amber-500 dark:border-b-gray-400  dark:hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient1); set_choicetype("i"); set_picked(item.strIngredient1) }}
+              <button className={picked === item.strIngredient1 ? "border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300" :"border-b px-2 py-4 w-4/4 ml-2 hover:border-b-amber-500 dark:border-b-gray-400  dark:hover:border-b-amber-500"} onClick={() => { set_togglerecipe_page(false); appendUnderscore(item.strIngredient1); set_choicetype("i"); set_picked(item.strIngredient1); toogleside_menu(); }}
                 key={item.strIngredient1}>{item.strIngredient1}</button>
             ))}
           </div>}

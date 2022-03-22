@@ -53,9 +53,9 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
 
 
   return (
-    <div>
-      <article className="md:ml-2 mt-16 ">
-        <section className="flex overflow-x-scroll md:overflow-hidden md:block ">
+    <div className="h-screen overflow-y-scroll">
+      <article className="lg:ml-2 mt-16 ">
+        <section className="flex overflow-x-scroll md:overflow-hidden md:block pt-1">
           {
             catagories.map(item => (
               <button className=" text-xs font-black bg-amber-400  rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black " key={item.strCategory} onClick={() => { set_choicetype("c"); setChoice(item.strCategory); set_togglerecipe_page(false); }}>{item.strCategory}</button>
@@ -73,10 +73,13 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
       
             {frontfood_list.length === 0 ? <div className="h-screen flex justify-center mt-12">
             <img className="w-12 h-12" src={loading} alt="loading" /></div> :
-            <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10">
-              {frontfood_list[0] === "No Food Found Error" ? <div className="flex justify-center"><p>No available food for this ingrident.</p></div> :
+            <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 lg:ml-10">
+              {frontfood_list[0] === "No Food Found Error" ?
+               <div className="flex justify-center mt-4">
+               <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><path fill="#B39DDB" d="M30.6 44H17.4c-2 0-3.7-1.4-4-3.4L9 11h30l-4.5 29.6c-.3 2-2 3.4-3.9 3.4z"/><path fill="#7E57C2" d="M38 13H10c-1.1 0-2-.9-2-2s.9-2 2-2h28c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
+               <p>No available food for this ingrident.</p></div> :
                 frontfood_list.map(item => (
-                  <div className="hover:brightness-90" key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
+                  <div className="hover:brightness-90 px-1" key={item.idMeal} onClick={() => { set_recipefor(item.idMeal); set_togglerecipe_page(true); }}>
                     <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
                     <p className="font-light text-center text-xs md:text-base" key={item.strMeal}>{item.strMeal}</p>
                   </div>
