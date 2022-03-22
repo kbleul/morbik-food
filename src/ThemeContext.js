@@ -22,8 +22,6 @@ import React , {useState , useEffect , createContext } from 'react'
        const rawSetTheme = (rawTheme) => {
          const root = window.document.documentElement;
          const isDark = rawTheme === 'dark';
-         console.log(root)
-
           root.classList.remove(isDark ? "light" : "dark");
           root.classList.add(isDark ? "dark" : "light");
 
@@ -32,10 +30,7 @@ import React , {useState , useEffect , createContext } from 'react'
 
        if(initialTheme) { rawSetTheme(initialTheme) }
 
-       useEffect(() => { 
-         rawSetTheme(theme)
-         console.log(theme)
-       },[theme])
+       useEffect(() => {  rawSetTheme(theme) },[theme])
       
        return(
          <ThemeContext.Provider value={{ theme , set_theme}} >{children}</ThemeContext.Provider>
