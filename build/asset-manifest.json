@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1dca33c2.css",
+    "main.js": "/static/js/main.98739e63.js",
+    "static/media/logodark.png": "/static/media/logodark.9ed653e402fd4806c844.png",
+    "static/media/logolight.png": "/static/media/logolight.2f116cac69ef142d575a.png",
+    "static/media/loading_.gif": "/static/media/loading_.2ce5c3e50f61949ee30c.gif",
+    "index.html": "/index.html",
+    "main.1dca33c2.css.map": "/static/css/main.1dca33c2.css.map",
+    "main.98739e63.js.map": "/static/js/main.98739e63.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1dca33c2.css",
+    "static/js/main.98739e63.js"
+  ]
+}
