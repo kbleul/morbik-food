@@ -537,16 +537,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
 
 .ml-4 {
   margin-left: 1rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
 }
 
 .ml-8 {
@@ -835,12 +835,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-bottom-left-radius: 1.5rem;
 }
 
-.border-2 {
-  border-width: 2px;
-}
-
 .border-0 {
   border-width: 0px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-b {

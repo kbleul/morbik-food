@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import list from "./food_subredditlist"
 import list_drink from "./drinks_subredditlist"
@@ -14,7 +14,6 @@ const SubredditListPage = () => {
     useEffect(() => {
 
         let temparr = [];
-        let counter = 0;
 
         const fetchsubreddit = async (item) => {
             try {
@@ -26,7 +25,6 @@ const SubredditListPage = () => {
                 if (temparr.length === 42) { setreddit(temparr); temparr = []; }
          } else { if (temparr.length === 19) { setreddit(temparr); temparr = []; }}
 
-                counter++;
 
             } catch (e) { console.log("Fetch " + item + " failed." + e) }
  

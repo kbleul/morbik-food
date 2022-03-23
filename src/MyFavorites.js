@@ -44,7 +44,7 @@ const MyFavorites = () => {
 
     return () => {  whereami_arr[1]("Home")   };
 
-                  }, []);
+                  });
 
   const fetchfood = async (item) => {
     const result = await axios(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item}`);
@@ -83,6 +83,7 @@ const MyFavorites = () => {
       foodfavs_arr = localStorage.getItem("SavedFoods").split(",");
       foodfavs_arr.map(item => {
         fetchfood(item);
+        return 0;
       })
     } else { set_foodfavorites(["None"]) }
   }
@@ -91,6 +92,7 @@ const MyFavorites = () => {
       drinkfavs_arr = localStorage.getItem("SavedDrinks").split(",");
       drinkfavs_arr.map(item => {
         fetchdrink(item);
+        return 0;
       })
     } else { set_drinkfavorites(["None"]) }
   }
@@ -99,6 +101,7 @@ const MyFavorites = () => {
       redditfavs_arr = localStorage.getItem("SavedSubReddits").split(",");
       redditfavs_arr.map(item => {
         fetchreddit(item);
+        return 0;
       })
     } else { set_redditfavorites(["None"]) }
  }

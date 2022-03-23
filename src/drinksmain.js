@@ -13,7 +13,6 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
   const [frontdrink_list, set_frontdrink_list] = useState([]);
 
   const [recipefor, set_recipefor] = useState("");
-  const [isnav, set_isnav] = useState("text-xs font-black bg-white border-2 rounded-full px-6 py-2 mb-2 ml-4")
 
   const getCatagories = async () => {
     try {
