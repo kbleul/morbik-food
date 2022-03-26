@@ -71,17 +71,17 @@ const RecipePage = ({ drinkid, similardrinks }) => {
         {
           recipedata.map(item => (
             <div key={`${item.strDrink} ${item.strDrink} ${item.idDrink}`}>
-              <section key={`${item.strDrink}1`} className="flex flex-col lg:flex-row justify-center items-center">
-                <div  key={`${item.strDrink}2`}  className="mb-20 lg:mb-0 lg:ml-2 flex flex-col w-11/12 justify-center lg:w-3/4" >
+              <section key={`${item.strDrink}1`} className="top_section-drink-recipe">
+                <div  key={`${item.strDrink}2`}  className="top_section-top--div---drink" >
                   <div  key={`${item.strDrink}3`} className="flex justify-center"><img className="ml-1 w-full lg:w-[440] " key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} width="480" height="315" /></div>
 
-                   <div  key={`${item.strDrink}4`} className="flex flex-col lg:flex-row justify-between text-base">
-                    <h4 className="mt-4 lg:mt-0 text-center border-b-2  font-black pl-2 lg:w-3/5" key={item.strDrink}>{item.strDrink} </h4>
+                   <div  key={`${item.strDrink}4`} className="top_section-top--secondary---div">
+                    <h4 className="top_section-top--h4" key={item.strDrink}>{item.strDrink} </h4>
   
                   {   isfavorite ?
-                    <button key={`${item.idDrink}${item.idDrink}1`} className="order-first lg:order-last pr-4 text-red-400 ml-8 self-end hover:border-b-2 hover:border-red-300 flex" onClick={() => {set_isfavorite(false); removeFavorite("drink" , item.idDrink)} }><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M11 15h2V9h3l-4-5l-4 5h3z" /><path fill="currentColor" d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z" /></svg><p className="ml-2">Saved</p></button> :
+                    <button key={`${item.idDrink}${item.idDrink}1`} className="isfavorite_btn-saved" onClick={() => {set_isfavorite(false); removeFavorite("drink" , item.idDrink)} }><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M11 15h2V9h3l-4-5l-4 5h3z" /><path fill="currentColor" d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z" /></svg><p className="ml-2">Saved</p></button> :
 
-                    <button key={`${item.idDrink}${item.idDrink}2`} className="order-first lg:order-last  text-red-400 border-b-2 border-red-300 hover:opacity-70 ml-8 self-end flex" onClick={() => { set_isfavorite(true); saveFavorites("drink", item.idDrink) }}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5l-5-5l1.41-1.41L11 12.67V3h2v9.67z" /></svg><p className="ml-2">Add to Favories</p></button>
+                    <button key={`${item.idDrink}${item.idDrink}2`} className="isfavorite_btn-add" onClick={() => { set_isfavorite(true); saveFavorites("drink", item.idDrink) }}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5l-5-5l1.41-1.41L11 12.67V3h2v9.67z" /></svg><p className="ml-2">Add to Favories</p></button>
                   }
                   </div>
 
@@ -89,14 +89,14 @@ const RecipePage = ({ drinkid, similardrinks }) => {
                 </div>
               </section>
             
-              <section  key={`${item.strDrink}5`} className="flex flex-col justify-items-center items-center">
-                {ingredientamount.length > 0 && <div  key={`${item.strDrink}6`} className="bg-gray-100 rounded-r-lg w-full lg:w-3/5 my-20 py-8 pl-4 font-serif dark:bg-gray-700 ">
+              <section  key={`${item.strDrink}5`} className="secondary_section">
+                {ingredientamount.length > 0 && <div  key={`${item.strDrink}6`} className="secondary_section-top--div">
                   <h2  key={`${item.strDrink}7`} className="text-center capitalize text-2xl leading-10 pb-8">Ingredients Needed</h2>
                   {ingredients.map(obj => (<p className="text-center leading-8" key={`${item.idDrink}${obj} ${item.idDrink}`}>{ingredientamount[ingredients.indexOf(obj)]} {obj}</p>))}
                 </div>}
 
-                <div  key={`${item.strDrink}8`} className="w-full lg:w-3/4 border-l-2 border-l-green-700 px-2 lg:pl-8 my-40 font-serif leading-6  lg:leading-8">
-                  <h2  key={`${item.strDrink}9`} className="text-center capitalize text-2xl leading-10 mb-8 font-bold ">Recipe</h2>
+                <div  key={`${item.strDrink}8`} className="secondary_section-secondary--div">
+                  <h2  key={`${item.strDrink}9`} className="secondary_section-secondary--h2 ">Recipe</h2>
                   {recipetext.map(steps => (steps !== "" && <p key={steps}> {steps}</p>))}
                 </div>
 
@@ -109,15 +109,15 @@ const RecipePage = ({ drinkid, similardrinks }) => {
           ))
         } </div>}
 
-     {recipedata.length !== 0  && <h2 className="capitalize text-xl leading-10 font-light pl-2 text-center  lg:text-left lg:ml-24">Similar Drinks</h2>}
+     {recipedata.length !== 0  && <h2 className="simmilarfoods_h2">Similar Drinks</h2>}
 
-    <div className="h-96 overflow-y-scroll lg:ml-24 ">
+    <div className="simmilarfoods_div-container">
 
-      {similardrinks.map(item => (<div className="float-left w-1/3 lg:w-1/5 lg:ml-2" onClick={() => set_currentdrink_id(item.idDrink)} key={`${item.idDrink}${item.strDrinkThumb}${item.strDrink}`}>
+      {similardrinks.map(item => (<div className="simmilarfoods_div-container--div" onClick={() => set_currentdrink_id(item.idDrink)} key={`${item.idDrink}${item.strDrinkThumb}${item.strDrink}`}>
         {
-          (recipedata[0] !== undefined && recipedata[0].strDrink !== item.strDrink) && <div  className="p-1 text-sm font-light hover:opacity-75" key={`${item.strDrinkThumb}${item.strDrink}`} >
+          (recipedata[0] !== undefined && recipedata[0].strDrink !== item.strDrink) && <div  className="simmilarfoods_div-container--div---div" key={`${item.strDrinkThumb}${item.strDrink}`} >
             <img key={item.strMealThumb} src={item.strDrinkThumb} alt={item.strDrink} />
-            <p className=" text-center" key={item.strDrink}>{item.strDrink}</p>
+            <p className="text-center" key={item.strDrink}>{item.strDrink}</p>
           </div>
         }
       </div>

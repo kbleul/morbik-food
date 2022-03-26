@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* header */
+.header {  @apply flex justify-between items-center fixed top-0 w-full z-20 h-16 border-b-2 bg-white dark:bg-black dark:border-0;  }
+
+.main_logo { @apply h-14 brightness-125 hover:brightness-100 lg:mx-4; }
+
+.dark_light-button { @apply dark:text-white  w-1/4 flex justify-center lg:hidden hover:text-red-700;  }
+
+.reddit_btn { @apply text-red-300 ml-2 xl:ml-16 hover:border-b-2 hover:border-red-300 dark:text-red-600; }
+.reddit_btn-clicked { @apply text-red-300 ml-2 xl:ml-16 border-b-2 border-red-300 dark:text-red-600; }
+.favorite_btn { @apply text-red-300  ml-4 xl:ml-16 hover:border-b-2 border-red-300 dark:text-red-600; }
+.favorite_btn-clicked { @apply text-red-300 ml-4 xl:ml-16 border-b-2 border-red-300 dark:text-red-600; }
+
+.reddit_btn-mobile {@apply  flex items-center  text-red-300 ml-2 xl:ml-16 hover:border-b-2 hover:border-red-300  dark:text-red-600; }
+.reddit_btn-mobile--clicked { @apply flex items-center text-red-300 ml-2 xl:ml-16 border-b-2 border-red-300  dark:text-red-600; }
+.favorit_btn-mobile {@apply flex text-red-300  ml-4 xl:ml-16 hover:border-b-2 hover:border-red-300 dark:text-red-600; }
+.favorit_btn-mobile--clicked { @apply flex text-red-300 ml-4 xl:ml-16 border-b-2 border-red-300 dark:text-red-600; }
+
+/* recipecontent */
+.nav_container { @apply grid grid-cols-8 gap-3 dark:bg-gray-800 dark:text-white h-full; }
+.nav_container-drink { @apply grid grid-cols-8 gap-3 dark:bg-gray-800 dark:text-white; }
+
+
+/* nav.js */
+.top_section { @apply h-[92vh] overflow-y-scroll md:overscroll-y-auto md:overflow-auto mt-4 md:mt-16; }
+.nav_title-container { @apply flex flex-row items-center justify-between; }
+.nav_title-h2 { @apply font-black text-lg pl-12 mt-10 mb-3 flex items-center; }
+.nav_title-button { @apply border-b text-lg mt-10 mb-3 mr-8 hover:text-red-400; }
+.loading_container { @apply flex  justify-center mt-8; }
+
+.nav_area-options-btn { @apply border-b px-4 py-3 w-3/4 hover:border-b-amber-500 dark:border-b-gray-400 dark:hover:border-b-amber-500; }
+.nav_area-options-btn--clicked { @apply border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300; }
+.nav_ingredient-options-btn { @apply border-b px-4 py-4 w-3/4 ml-2 hover:border-b-amber-500 dark:border-b-gray-400  dark:hover:border-b-amber-500; }
+.nav_ingredient-options-btn--clicked { @apply ml-2 border-b px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-500 dark:border-b-gray-400;}
+/* drinknav.js */
+.top_section-drink {@apply overflow-y-scroll md:overscroll-y-auto md:overflow-auto mt-4 md:mt-16; }
+.nav_ingredient-option-btn {@apply border-b px-2 py-3 w-3/4 hover:border-b-amber-500 dark:border-b-gray-400  dark:hover:border-b-amber-500;}
+.nav_ingredient-option-btn--clicked {@apply px-4 py-3 w-3/4 font-bold border-l-4 border-l-green-400 dark:border-b-gray-300; }
+
+/* main */
+.catagories_section { @apply flex overflow-x-scroll md:overflow-hidden md:block pt-2; }
+.catagories_btn { @apply  text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black; }
+.main_food_drink-choice--container { @apply mt-4 md:mt-8 flex justify-center; }
+
+.main_foodlist-container { @apply h-screen flex justify-center mt-10; }
+.secondary_foodlist-container { @apply grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10; }
+.item_name-p { @apply font-light text-center text-sm md:text-base; }
+
+/* footer */
+.footer { @apply mt-40 bg-gray-100 dark:bg-gray-700; }
+.main_flexitems-container { @apply pb-20 pt-32 flex flex-col lg:flex-row w-full; }
+
+.first_section { @apply lg:ml-4 lg:w-4/12 text-center text-sm lg:text-base lg:mr-2 lg:hover:border-b-2 lg:hover:border-green-400; }
+.first_section-h3 { @apply font-extrabold text-xl lg:text-2xl pb-2 font-serif uppercase; }
+.second_section { @apply lg:w-4/12 text-center text-sm lg:text-base lg:hover:border-b-2 lg:hover:border-green-400 my-12 lg:my-0;}
+.second_section-h3 { @apply font-extrabold text-xl xl:text-2xl pb-2 font-serif uppercase lg:pl-16; }
+
+.section-p { @apply italic leading-10 font-mono hover:underline hover:decoration-gray-400; } 
+
+.third_section { @apply ml-2 lg:w-4/12 flex justify-center items-center font-extrabold text-lg uppercase hover:border-l-2 hover:border-green-400; }
+.third_section-a { @apply text-gray-400 decoration-2 hover:underline hover:decoration-green-500; }
+
+/* recipepage */
+.top_section { @apply flex flex-col xl:flex-row items-center;}
+.top_section-top--div { @apply mb-20 xl:mb-0 lg:ml-2 flex flex-col w-4/5 justify-center xl:w-2/4; }
+.top_section-top--secondary---div { @apply flex flex-col lg:flex-row justify-between text-base; }
+.top_section-top--h4 { @apply mt-4 lg:mt-0 text-center border-b-2  font-black pl-2 lg:w-3/5;}
+
+.isfavorite_btn-saved { @apply order-first lg:order-last pr-4 text-red-400 ml-8 self-end hover:border-b-2 hover:border-red-300 flex; }
+.isfavorite_btn-add { @apply order-first lg:order-last  text-red-400 border-b-2 border-red-300 hover:opacity-70 ml-8 self-end flex; }
+.showyoutube { @apply  border-2 border-amber-400 rounded-full bg-amber-300 px-8 py-2 flex flex-row justify-between font-mono xl:ml-24 hover:bg-amber-400 dark:bg-amber-400 dark:hover:opacity-70; }
+
+.secondary_section { @apply flex flex-col justify-items-center items-center;}
+.secondary_section-top--div { @apply bg-gray-100 rounded-r-lg w-full lg:w-3/5 xl:w-5/12 my-20  py-8 pl-4 font-serif dark:bg-gray-700; }
+.secondary_section-secondary--div { @apply w-full lg:w-3/4 border-l-2 border-l-green-700 px-2 lg:pl-8 my-40 font-serif leading-6  lg:leading-8; }
+.secondary_section-secondary--h2 { @apply text-center capitalize text-2xl leading-10 mb-8 font-bold; }
+
+.simmilarfoods_h2 { @apply mt-24 capitalize text-xl leading-10 font-light pl-2 text-center  lg:text-left lg:ml-24; }
+.simmilarfoods_div-container { @apply h-96 overflow-y-scroll lg:ml-24 ; }
+.simmilarfoods_div-container--div { @apply float-left w-1/3 lg:w-1/5 lg:ml-2; } 
+
+.simmilarfoods_div-container--div---div { @apply p-1 text-sm font-light hover:opacity-75; }
+/* drinkrecipepage */
+.top_section-drink-recipe { @apply flex flex-col lg:flex-row justify-center items-center; }
+.top_section-top--div---drink { @apply mb-20 lg:mb-0 lg:ml-2 flex flex-col w-11/12 justify-center lg:w-3/5; }
+

@@ -73,14 +73,14 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
   return (<div>
     
       <article className="lg:ml-2 mt-16 ">
-        <section className="flex overflow-x-scroll md:overflow-hidden md:block pt-4">
+        <section className="catagories_section">
           {
             catagories.map(item => (
-              <button className=" text-xs font-black bg-amber-400 border-0 rounded-full px-6 py-2 mb-2 ml-4  hover:bg-amber-200 dark:text-black" key={item} onClick={() => { set_choicetype("c"); setChoice(item); set_togglerecipe_page(false); }}>{item}</button>
+              <button className="catagories_btn" key={item} onClick={() => { set_choicetype("c"); setChoice(item); set_togglerecipe_page(false); }}>{item}</button>
             ))
           }
         </section>
-        <div className="mt-4 md:mt-8 flex justify-center">
+        <div className="main_food_drink-choice--container">
           <Link to={`/`} >
             <button className="font-light px-4 hover:bg-amber-200 dark:hover:text-black">Foods</button>
           </Link>
@@ -89,9 +89,9 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
         {togglerecipe_page ? <RecipePage drinkid={recipefor} similardrinks={frontdrink_list} /> :
     
         <div>
-        {frontdrink_list.length === 0 ? <div className="h-screen flex justify-center mt-8">
+        {frontdrink_list.length === 0 ? <div className="main_foodlist-container">
            <img className="w-12 h-12" src={loading} alt="loading" /></div> :
-          <section className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 mt-4 md:m-16 md:ml-10">
+          <section className="secondary_foodlist-container">
             {frontdrink_list[0] === "No Drink Found Error" ? 
             <div className="flex flex-col mt-4">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="5em" height="5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><path fill="#B39DDB" d="M30.6 44H17.4c-2 0-3.7-1.4-4-3.4L9 11h30l-4.5 29.6c-.3 2-2 3.4-3.9 3.4z"/><path fill="#7E57C2" d="M38 13H10c-1.1 0-2-.9-2-2s.9-2 2-2h28c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
@@ -100,7 +100,7 @@ const Main = ({ navChoice, setChoice, choicetype, set_choicetype, togglerecipe_p
               frontdrink_list.map(item => (
                 <div className="hover:brightness-90" key={item.idDrink} onClick={() => { set_recipefor(item.idDrink); set_togglerecipe_page(true); }}>
                   <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
-                  <p className="font-light text-center  text-xs md:text-base" key={item.strDrink}>{item.strDrink}</p>
+                  <p className="item_name-p" key={item.strDrink}>{item.strDrink}</p>
                 </div>
               ))
             }
