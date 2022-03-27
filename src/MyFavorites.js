@@ -164,23 +164,23 @@ const MyFavorites = () => {
   return (<article className="mt-18 dark:bg-gray-800 dark:text-white">
 
   {(drink_recipefor === "" && recipefor === "") &&
-    <div className="mb-8 lg:mb-0 lg:w-3/5 lg:ml-[35%] flex justify-center mt-11  pt-8">
+    <div className="fav_top-nav--container">
       <div>
         <button className={type === "food" ? "font-black underline" : "font-light hover:bg-amber-200 hover:text-black px-2 lg:px-4 dark:font-normal"} 
         onClick={() => set_type("food")}>Foods</button>
-        <button className={type === "drink" ? "ml-8 font-black underline px-2 lg:px-4" :"ml-8 font-light hover:bg-amber-200 hover:text-black px-2 lg:px-4 dark:font-normal" } 
+        <button className={type === "drink" ? "fav_topnav-btn--clicked" :"fav_topnav-btn" } 
         onClick={() => set_type("drink")}>Drinks</button>
-        <button className={type === "reddit" ? "ml-8 font-black underline px-2 lg:px-4" : "ml-8 font-light hover:bg-amber-200 hover:text-black px-2 lg:px-4 dark:font-normal" }
+        <button className={type === "reddit" ? "fav_topnav-btn--clicked" : "fav_topnav-btn" }
         onClick={() => set_type("reddit")}>Reddits</button>
       </div>
     </div>
 }
-    {drink_recipefor !== "" && <div className="lg:pl-32 mt-16">
-      <button className="text-4xl hover:text-rose-500" onClick={() => { set_reloadpage(reloadpage + 1); set_drink_recipefor(""); }}>←</button>
+    {drink_recipefor !== "" && <div className="fav_backbtn-container">
+      <button className="fav_backbtn" onClick={() => { set_reloadpage(reloadpage + 1); set_drink_recipefor(""); }}>←</button>
       <DrinkRecipePage drinkid={drink_recipefor} similardrinks={frontfood_list} /></div>}
 
-    {recipefor !== "" && <div className="lg:pl-32 mt-16">
-      <button className="text-4xl  hover:text-rose-500" onClick={() => { set_reloadpage(reloadpage + 1); set_recipefor(""); }}>←</button>
+    {recipefor !== "" && <div className="fav_backbtn-container">
+      <button className="fav_backbtn" onClick={() => { set_reloadpage(reloadpage + 1); set_recipefor(""); }}>←</button>
       <RecipePage foodid={recipefor} similarfoods={frontfood_list} />
     </div>}
 
@@ -188,26 +188,26 @@ const MyFavorites = () => {
       {type === "food" &&
         <section>
           {foodfavorites.length > 0 ? <div>{foodfavorites[0] === "None" ?
-            <div className="flex flex-col items-center mt-20 h-screen">
+            <div className="nosaveditems-container">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="5em" height="5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><path fill="#B39DDB" d="M30.6 44H17.4c-2 0-3.7-1.4-4-3.4L9 11h30l-4.5 29.6c-.3 2-2 3.4-3.9 3.4z"/><path fill="#7E57C2" d="M38 13H10c-1.1 0-2-.9-2-2s.9-2 2-2h28c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
             <p>No saved food recipes found ....</p></div> : <section className="h-screen">
-              <h1 className="text-center lg:text-left mb-8 lg:mb-0 lg:ml-16 text-3xl lg:text-5xl font-light font-serif">Favorite Foods</h1>
-              <div className="lg:grid lg:grid-cols-3 lg:gap-3 ">
+              <h1 className="fav_content-h1">Favorite Foods</h1>
+              <div className="favorate_main-wrapper ">
 
-                <div className="col-span-1 lg:h-[75vh] flex flex-col lg:flex-row justify-center items-center">
+                <div className="favorate_main-secondary-wrapper">
                   <div>
                    {leftimg.length > 0 && <img className="p-4" src={leftimg[0]} alt={leftimg[1]} />}
-                    <h3 className="font-light text-center px-2 dark:font-normal" key={leftimg[1]}>{leftimg[1]}</h3>
-                    <p className="font-light text-center dark:font-normal" key={`${leftimg[1]}${leftimg[1]}`}>{leftimg[2] ? `Tags : ${leftimg[2]}` : "Tags : "}</p>
+                    <h3 className="fav_title-h3" key={leftimg[1]}>{leftimg[1]}</h3>
+                    <p className="fav_tags-p" key={`${leftimg[1]}${leftimg[1]}`}>{leftimg[2] ? `Tags : ${leftimg[2]}` : "Tags : "}</p>
                   </div>
-                  <div className="text-4xl font-extrabold">
-                    <button className="text-green-600 hover:text-gray-500" onClick={() => setleft_imgfunc("next")}>→</button>
-                    <button className="text-rose-600 hover:text-gray-500" onClick={() => setleft_imgfunc("back")}>←</button>
+                  <div className="fav_imgscroll-btns-contaner">
+                    <button className="fav_imgscroll-btns--green" onClick={() => setleft_imgfunc("next")}>→</button>
+                    <button className="fav_imgscroll-btns--rose" onClick={() => setleft_imgfunc("back")}>←</button>
                   </div>
                 </div>
-                <section className="h-[40vh] lg:h-[75vh] overflow-y-scroll lg:col-span-2 grid grid-cols-3 gap-1">
+                <section className="fav_images-section">
                   {foodfavorites.map(item => (
-                    <div className="lg:w-11/12 hover:brightness-90" key={item.idMeal} onClick={() => viewFavorite("food", item.idMeal, item.strCategory)}>
+                    <div className="fav_images-subcontainer" key={item.idMeal} onClick={() => viewFavorite("food", item.idMeal, item.strCategory)}>
                       <img key={item.strMealThumb} src={item.strMealThumb} alt={item.strMeal} />
                     </div>
                   ))
@@ -215,7 +215,7 @@ const MyFavorites = () => {
                 </section>
               </div>
             </section>} </div> :
-            <div className="flex justify-center h-screen mt-12"> <img className="w-12 h-12" src={loading} alt="loading" /></div>
+            <div className="fav_loading-wrapper"> <img className="fav_loading-img" src={loading} alt="loading" /></div>
 
           }
 
@@ -225,27 +225,27 @@ const MyFavorites = () => {
       {type === "drink" &&
         <section  className=" mb-12 overflow-y">
           {drinkfavorites.length > 0 ? <div>{drinkfavorites[0] === "None" ?
-          <div className="flex flex-col items-center mt-20 h-screen">
+          <div className="nosaveditems-container">
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="5em" height="5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><path fill="#B39DDB" d="M30.6 44H17.4c-2 0-3.7-1.4-4-3.4L9 11h30l-4.5 29.6c-.3 2-2 3.4-3.9 3.4z"/><path fill="#7E57C2" d="M38 13H10c-1.1 0-2-.9-2-2s.9-2 2-2h28c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
             <p>No saved drinks recipes found ....</p>
             </div> : <section className="h-screen">
-              <h1 className="text-center lg:text-left mb-8 lg:mb-0 lg:ml-16 text-3xl lg:text-5xl font-light font-serif">Favorite Drinks</h1>
-              <div className="lg:grid lg:grid-cols-3 lg:gap-3 ">
+              <h1 className="fav_content-h1">Favorite Drinks</h1>
+              <div className="favorate_main-wrapper">
 
-                <div className="col-span-1 lg:h-[77vh] flex flex-col lg:flex-row justify-center items-center">
+                <div className="favorate_main-secondary-wrapper">
                   <div>
                     <img className="p-4" src={leftimg_drink[0]} alt={leftimg_drink[1]} />
-                    <h3 className="font-light text-center px-2 dark:font-normal" key={leftimg_drink[1]}>{leftimg_drink[1]}</h3>
-                    <p className="font-light text-center dark:font-normal" key={`${leftimg_drink[1]}${leftimg_drink[1]}`}>{leftimg_drink[2] ? `Tags : ${leftimg_drink[2]}` : "Tags : "}</p>
+                    <h3 className="fav_title-h3" key={leftimg_drink[1]}>{leftimg_drink[1]}</h3>
+                    <p className="fav_tags-p" key={`${leftimg_drink[1]}${leftimg_drink[1]}`}>{leftimg_drink[2] ? `Tags : ${leftimg_drink[2]}` : "Tags : "}</p>
                   </div>
-                  <div className="text-4xl font-extrabold">
-                    <button className="text-green-600 hover:text-gray-500" onClick={() => setleft_imgfunc("next")}>→</button>
-                    <button className="text-rose-600 hover:text-gray-500" onClick={() => setleft_imgfunc("back")}>←</button>
+                  <div className="fav_imgscroll-btns-contaner">
+                    <button className="fav_imgscroll-btns--green" onClick={() => setleft_imgfunc("next")}>→</button>
+                    <button className="fav_imgscroll-btns--rose" onClick={() => setleft_imgfunc("back")}>←</button>
                   </div>
                 </div>
-                <section className="h-[40vh] lg:h-[75vh] overflow-y-scroll lg:col-span-2 grid grid-cols-3 gap-1">
+                <section className="fav_images-section">
                   {drinkfavorites.map(item => (
-                    <div className="lg:w-11/12 hover:brightness-90" key={item.idDrink} onClick={() => viewFavorite("drink", item.idDrink, item.strCategory)}>
+                    <div className="fav_images-subcontainer" key={item.idDrink} onClick={() => viewFavorite("drink", item.idDrink, item.strCategory)}>
                       <img key={item.strDrinkThumb} src={item.strDrinkThumb} alt={item.strDrink} />
                     </div>
                   ))
@@ -253,7 +253,7 @@ const MyFavorites = () => {
                 </section>
               </div>
             </section>} </div> :
-            <div className="flex justify-center h-screen mt-12"> <img className="w-12 h-12" src={loading} alt="loading" /> </div>
+            <div className="fav_loading-wrapper"> <img className="fav_loading-img" src={loading} alt="loading" /> </div>
           }
 
         </section>
@@ -263,11 +263,11 @@ const MyFavorites = () => {
       {type === "reddit" &&  
         <section>
         {redditfavorites.length > 0 ? <div>{ redditfavorites[0] === "None" ?
-        <div className="flex flex-col items-center mt-20 h-screen">
+        <div className="nosaveditems-container">
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="5em" height="5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><path fill="#B39DDB" d="M30.6 44H17.4c-2 0-3.7-1.4-4-3.4L9 11h30l-4.5 29.6c-.3 2-2 3.4-3.9 3.4z"/><path fill="#7E57C2" d="M38 13H10c-1.1 0-2-.9-2-2s.9-2 2-2h28c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
         <p>No saved subreddits ....</p>
         </div> : <section className="">
-          <h1 className="text-center lg:text-left mb-8  lg:ml-16 text-3xl lg:text-5xl font-light font-serif">Favorite Subreddits</h1>
+          <h1 className="fav_content-h1">Favorite Subreddits</h1>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 h-[74vh] overflow-y-scroll text-center ">
     
             {redditfavorites.map(item => (
@@ -282,8 +282,7 @@ const MyFavorites = () => {
             }
           </div>
         </section>  } </div> :        
-        <div className="mt-12 flex justify-center h-screen">
-        <img className="w-12 h-12" src={loading} alt="loading" /></div>
+        <div className="fav_loading-wrapper"> <img className="fav_loading-img" src={loading} alt="loading" /></div>
 
         }
 
@@ -295,7 +294,7 @@ const MyFavorites = () => {
 
     }
           
-    <div className="mt-40 border-2 border-white dark:border-gray-800"><Fotter /></div>
+    <div className="fav_footer-wrapper"><Fotter /></div>
 
   </article>
   )

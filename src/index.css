@@ -87,3 +87,69 @@
 .top_section-drink-recipe { @apply flex flex-col lg:flex-row justify-center items-center; }
 .top_section-top--div---drink { @apply mb-20 lg:mb-0 lg:ml-2 flex flex-col w-11/12 justify-center lg:w-3/5; }
 
+/* subredditlistpage */
+.foodbtn { @apply mt-20 font-light hover:bg-amber-200 px-4 dark:hover:text-black;  }
+.foodbtn-clicked { @apply mt-20 md:ml-16 font-black underline; }
+.drinkbtn { @apply mt-20 ml-4 md:ml-8 font-black underline px-4; }
+.drinkbtn-clicked { @apply mt-20  ml-4 md:ml-16 font-light hover:bg-amber-200 px-4; }
+
+.subredditlist_container { @apply h-screen flex justify-center mt-12; }
+.subredditlist_subcontainer { @apply grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-2 lg:gap-10 h-[74vh] overflow-y-scroll text-center; }
+.subredditlist_container-secondary { @apply even:bg-gray-100 dark:even:bg-gray-600 ml-[12%] w-3/4 md:ml-12 mb-8 border-2 border-black py-10 rounded-t-md rounded-r-full rounded-l-3xl hover:bg-yellow-100 dark:border-white  dark:hover:bg-black }
+.subredditlist_prefix-p { @apply overflow-hidden font-mono text-2xl md:text-xl lg:text-2xl leading-8 ;}
+
+/* subreddit */
+.main_wrapper { @apply grid grid-cols-8 gap-3 dark:bg-gray-800 dark:text-white mt-16 h-screen; }
+.main_nav-wrapper { @apply hidden w-11/12 lg:w-full z-10 absolute top-16 left-0 bg-white dark:bg-gray-800 lg:static lg:col-start-1 lg:col-end-3  lg:mt-10  lg:block;}
+.subreddit_main-wrapper { @apply  h-screen overflow-y-scroll col-start-1 lg:col-start-3 col-end-9 mt-12; }
+.subreddit_subcontainer-main { @apply col-start-1 lg:col-start-3 col-end-9 mt-12; }
+.subreddit_top_section-container { @apply flex flex-col lg:flex-row justify-center; }
+.subreddit_main-h2 { @apply text-4xl lg:text-6xl text-gray-400 font-bold text-center; }
+.subreddit_main-p--subscribers { @apply pt-3 text-gray-400 text-sm text-center; }
+
+.subreddit_main-isfav--btn { @apply pr-4 text-red-400 ml-8 mr-4 lg:mr-0 self-end hover:border-b-2 hover:border-red-300 flex; }
+.subreddit_main-notfav--btn { @apply text-red-400 border-b-2 border-red-300 hover:opacity-70 ml-8 self-end flex mr-4 lg:mr-0; } 
+
+.single-subreddit-container--left { @apply w-1/5 lg:w-2/12 flex flex-col lg:flex-row items-center lg:items-start; }
+.upvotes-p { @apply text-xl lg:text-2xl  font-bold justify-self-center pl-3 pr-2; }
+.single-subreddit-container--right { @apply w-4/5 pr-2 lg:w-10/12 pr-r lg:pr-4; }
+.single-subreddit-h4 { @apply text-lg lg:text-xl leading-5 lg:leading-7 font-mono pb-4; }
+.single-subreddit-selftext--p {  @apply font-serif leading-5  lg:leading-6 text-sm lg:text-base; }
+.comment_author-container { @apply flex flex-col lg:flex-row lg:justify-between pt-8 pb-4; }
+.author_p { @apply w-full lg:w-8/12 font-light text-right lg:text-left pr-2 mb-2; }
+.comment-btn { @apply w-fit lg:w-1/4 ml-0 lg:ml-4 text-sm  px-4 md:px-6 font-semibold bg-amber-300 dark:text-black; }
+.subreddit_footer-wrapper { @apply mt-40 border-2 dark:border-gray-800 col-start-1 lg:col-start-3 col-end-9; }
+
+/* RedditNavigation */
+.redditnav_wrapper { @apply lg:overscroll-y-auto lg:overflow-auto mt-4 lg:mt-16  h-screen overflow-y-scroll; }
+.redditnav_title-container { @apply flex flex-row items-center justify-between ; }
+.redditnav_title-h2 { @apply font-black text-lg pl-12 mt-10 mb-3 flex; }
+.redditnav_showitems-toogle--btn { @apply border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400 dark:border-b-gray-600; }
+
+.redditnav_items-btns--container { @apply flex item-center justify-center; }
+.redditnav_btn { @apply w-3/4 border-b px-4 py-3  hover:border-b-amber-500 dark:border-b-gray-600 dark:hover:border-b-amber-500; }
+.redditnav_btn-clicked { @apply w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500; }
+
+/* MyFavorites */
+.fav_top-nav--container { @apply mb-8 lg:mb-0 lg:w-3/5 lg:ml-[35%] flex justify-center mt-11  pt-8; }
+.fav_topnav-btn { @apply ml-8 font-light hover:bg-amber-200 hover:text-black px-2 lg:px-4 dark:font-normal; }
+.fav_topnav-btn--clicked { @apply ml-8 font-black underline px-2 lg:px-4; }
+.fav_backbtn-container { @apply lg:pl-32 mt-1; }
+.fav_backbtn { @apply text-4xl hover:text-rose-500; }
+.nosaveditems-container { @apply flex flex-col items-center mt-20 h-screen; }
+
+.fav_content-h1 { @apply text-center lg:text-left mb-8 lg:mb-0 lg:ml-16 text-3xl lg:text-5xl font-light font-serif; }
+.favorate_main-wrapper { @apply lg:grid lg:grid-cols-3 lg:gap-3; }
+.favorate_main-secondary-wrapper { @apply col-span-1 lg:h-[76vh] flex flex-col lg:flex-row justify-center items-center; }
+.fav_title-h3 { @apply font-light text-center px-2 dark:font-normal; }
+.fav_tags-p { @apply font-light text-center dark:font-normal; }
+
+.fav_imgscroll-btns-contaner { @apply text-4xl font-extrabold; }
+.fav_imgscroll-btns--rose { @apply text-rose-600 hover:text-gray-500; }
+.fav_imgscroll-btns--green { @apply text-green-600 hover:text-gray-500; }
+
+.fav_images-section { @apply h-[40vh] lg:h-[75vh] overflow-y-scroll lg:col-span-2 grid grid-cols-3 gap-1; }
+.fav_images-subcontainer { @apply lg:w-11/12 hover:brightness-90; }
+.fav_loading-wrapper { @apply flex justify-center h-screen mt-12; }
+.fav_loading-img { @apply w-12 h-12; }
+.fav_footer-wrapper { @apply mt-40 border-2 border-white dark:border-gray-800; }

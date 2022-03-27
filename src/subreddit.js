@@ -92,34 +92,34 @@ const Subreddit = () => {
   }, [subreddit]);
 
   return (
-    <article className="grid grid-cols-8 gap-3 dark:bg-gray-800 dark:text-white mt-16 h-screen">
+    <article className="main_wrapper">
       <nav
         id="sidenav"
-        className="hidden w-11/12 lg:w-full z-10 absolute top-16 left-0 bg-white dark:bg-gray-800 lg:static lg:col-start-1 lg:col-end-3  lg:mt-10  lg:block"
+        className="main_nav-wrapper"
       >
         <RedditNavigation picked={slug} />
       </nav>
-      <section className=" h-screen overflow-y-scroll col-start-1 lg:col-start-3 col-end-9 mt-12">
-        <main className="col-start-1 lg:col-start-3 col-end-9 mt-12">
+      <section className="subreddit_main-wrapper">
+        <main className="subreddit_subcontainer-main">
           {subreddit.length === 0 ? (
-            <div className="h-screen flex justify-center mt-12">
-              <img src={loading} alt="loading" className="w-12 h-12" />{" "}
+            <div className="loading_container">
+              <img src={loading} alt="loading" className="w-12 h-12" />
             </div>
           ) : (
             <div>
-              <div className="flex flex-col lg:flex-row justify-center">
+              <div className="subreddit_top_section-container">
                 <a
                   href={`https://www.reddit.com/r/${subreddit[0].data.subreddit}/`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <h2
-                    className="text-4xl lg:text-6xl text-gray-400 font-bold text-center"
+                    className="subreddit_main-h2"
                     key={subreddit[0].data.subreddit}
                   >
                     {subreddit[0].data.subreddit_name_prefixed}
                   </h2>
-                  <p className="pt-3 text-gray-400 text-sm text-center">
+                  <p className="subreddit_main-p--subscribers">
                     {subreddit[0].data.subreddit_subscribers
                       ? `Subscribers - ${subreddit[0].data.subreddit_subscribers}`
                       : ""}
@@ -128,7 +128,7 @@ const Subreddit = () => {
                 {isfavorite ? (
                   <button
                     key={`${subreddit[0].data.subreddit}${subreddit[0].data.subreddit}1`}
-                    className="pr-4 text-red-400 ml-8 mr-4 lg:mr-0 self-end hover:border-b-2 hover:border-red-300 flex"
+                    className="subreddit_main-isfav--btn"
                     onClick={() => {
                       set_isfavorite(false);
                       removeFavorite("reddit", subreddit[0].data.subreddit);
@@ -154,7 +154,7 @@ const Subreddit = () => {
                 ) : (
                   <button
                     key={`${subreddit[0].data.subreddit}${subreddit[0].data.subreddit}15`}
-                    className="text-red-400 border-b-2 border-red-300 hover:opacity-70 ml-8 self-end flex mr-4 lg:mr-0"
+                    className="subreddit_main-notfav--btn"
                     onClick={() => {
                       set_isfavorite(true);
                       saveFavorites("reddit", subreddit[0].data.subreddit);
@@ -191,7 +191,7 @@ const Subreddit = () => {
                     >
                       <section className="flex">
                         <div
-                          className="w-1/5 lg:w-2/12 flex flex-col lg:flex-row items-center lg:items-start"
+                          className="single-subreddit-container--left"
                           key={`${subreddit[0].data.permalink} ${subreddit[0].data.permalink} ${subreddit[0].data.permalink} ${subreddit[0].data.permalink}`}
                         >
                           <svg
@@ -205,19 +205,19 @@ const Subreddit = () => {
                             </g>
                           </svg>
                           <p
-                            className="text-xl lg:text-2xl  font-bold justify-self-center pl-3 pr-2"
+                            className="upvotes-p"
                             key={`${item.data.ups} ${subreddit[0].data.permalink}`}
                           >
-                            {" "}
+
                             {item.data.ups}
                           </p>
                         </div>
                         <div
-                          className="w-4/5 pr-2 lg:w-10/12 pr-r lg:pr-4"
+                          className="single-subreddit-container--right"
                           key={`${item.data.title} ${item.data.author}`}
                         >
                           <h4
-                            className="text-lg lg:text-xl leading-5 lg:leading-7 font-mono pb-4"
+                            className="single-subreddit-h4"
                             key={item.data.title}
                           >
                             {item.data.title}
@@ -234,7 +234,7 @@ const Subreddit = () => {
                                     className="border-b dark:border-b-gray-700"
                                   >
                                     <p
-                                      className="font-serif leading-5  lg:leading-6 text-sm lg:text-base"
+                                      className="single-subreddit-selftext--p"
                                       key={
                                         subredditcontent_map[item.data.id]
                                           .selftext
@@ -246,7 +246,7 @@ const Subreddit = () => {
                                       }
                                     </p>
                                     <div
-                                      className="flex flex-col lg:flex-row lg:justify-between pt-8 pb-4"
+                                      className="comment_author-container"
                                       key={`${subredditcontent_map[item.data.id]
                                         .subreddit_id
                                         }${subredditcontent_map[item.data.id]
@@ -254,13 +254,13 @@ const Subreddit = () => {
                                         }${item.data.author}`}
                                     >
                                       <p
-                                        className="w-full lg:w-8/12 font-light text-right lg:text-left pr-2 mb-2 "
+                                        className="author-p"
                                         key={item.data.author}
                                       >
                                         Submitted by : {item.data.author}
                                       </p>
                                       <button
-                                        className="w-fit lg:w-1/4 ml-0 lg:ml-4 text-sm  px-4 md:px-6 font-semibold bg-amber-300 dark:text-black"
+                                        className="comment-btn"
                                         key={`${subredditcontent_map[item.data.id]
                                           .num_comments
                                           } ${subredditcontent_map[item.data.id]
@@ -287,7 +287,7 @@ const Subreddit = () => {
             </div>
           )}
         </main>
-        <div className="mt-40 border-2 dark:border-gray-800 col-start-1 lg:col-start-3 col-end-9">
+        <div className="subreddit_footer-wrapper">
           <Footer />
         </div>
       </section>
@@ -325,10 +325,10 @@ const RedditNavigation = ({ picked }) => {
   };
 
   return (
-    <section className=" lg:overscroll-y-auto lg:overflow-auto mt-4 lg:mt-16  h-screen overflow-y-scroll">
+    <section className="redditnav_wrapper">
       <div>
-        <div className="flex flex-row items-center justify-between ">
-          <h2 className="font-black text-lg pl-12 mt-10 mb-3 flex">
+        <div className="redditnav_title-container">
+          <h2 className="redditnav_title-h2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
@@ -346,7 +346,7 @@ const RedditNavigation = ({ picked }) => {
             <p className="ml-2">Food Subreddits</p>
           </h2>
           <button
-            className="border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400 dark:border-b-gray-600"
+            className="redditnav_showitems-toogle--btn"
             onClick={() => showChoices("food")}
           >
             {show_foodsubreddit ? "↑" : "↓"}
@@ -359,13 +359,13 @@ const RedditNavigation = ({ picked }) => {
               key={`${item}key`}
               to={`/reddit/${item}`}
             >
-              <div key={`${item}1`} className="flex item-center justify-center">
+              <div key={`${item}1`} className="redditnav_items-btns--container">
                 <button
                   key={item}
                   className={
                     picked === item
-                      ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500"
-                      : " w-3/4 border-b px-4 py-3  hover:border-b-amber-500 dark:border-b-gray-600 dark:hover:border-b-amber-500"
+                      ? "redditnav_btn-clicked"
+                      : "redditnav_btn"
                   }
                 >
                   {item}
@@ -375,8 +375,8 @@ const RedditNavigation = ({ picked }) => {
           ))}
         </div>
 
-        <div className="flex flex-row items-center justify-between ">
-          <h2 className="font-black  text-lg pl-12 mt-10 mb-3 flex">
+        <div className="redditnav_title-container">
+          <h2 className="redditnav_title-h2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
@@ -394,7 +394,7 @@ const RedditNavigation = ({ picked }) => {
             <p className="ml-2">Drink Subreddits</p>
           </h2>
           <button
-            className="border-b text-xl  mt-10 mb-3 mr-8 hover:text-red-400 dark:border-b-gray-600"
+            className="redditnav_showitems-toogle--btn"
             onClick={() => showChoices("drink")}
           >
             {show_drinksubreddit ? "↑" : "↓"}
@@ -407,13 +407,11 @@ const RedditNavigation = ({ picked }) => {
               key={`${item}key`}
               to={`/reddit/${item}`}
             >
-              <div key={`${item}1`} className="flex item-center justify-center">
+              <div key={`${item}1`} className="redditnav_items-btns--container">
                 <button
                   key={item}
                   className={
-                    picked === item
-                      ? "w-3/4 border-b px-4 py-3 font-bold border-l-2 border-l-green-500"
-                      : " w-3/4 border-b px-4 py-3  hover:border-b-amber-500 dark:hover:border-b-amber-500 dark:border-b-gray-600"
+                    picked === item ? "redditnav_btn-clicked": "redditnav_btn"
                   }
                 >
                   {item}
