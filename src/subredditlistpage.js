@@ -60,7 +60,7 @@ const SubredditListPage = () => {
             <div>
             {reddit.length === 0 ? <div className="subredditlist_container"><img src={loading} alt="loading" className="w-12 h-12" /> </div> :
                 <div className="subredditlist_subcontainer">
-                    {reddit.map(item => (<div className="subredditlist_container-secondar" key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
+                    {reddit.map(item => (<div className="subredditlist_container-secondary" key={`${item.subreddit_name_prefixed}${item.id}${item.permalink}`}>
                         <Link key={`${item.subreddit_name_prefixed}${item.id}`} to={`/reddit/${item.subreddit}`} >
                             <section key={item.permalink} className="">
                                 <p key={item.subreddit}>{item.subreddit}</p>

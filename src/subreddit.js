@@ -95,7 +95,7 @@ const Subreddit = () => {
     <article className="main_wrapper">
       <nav
         id="sidenav"
-        className="main_nav-wrapper"
+        className="hidden w-11/12 lg:w-full z-10 absolute top-16 left-0 bg-white dark:bg-gray-800 lg:static lg:col-start-1 lg:col-end-3 lg:block"
       >
         <RedditNavigation picked={slug} />
       </nav>
